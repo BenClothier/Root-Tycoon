@@ -57,6 +57,8 @@ public class DirtTile : MonoBehaviour
     private void PickupRoot () {
         Destroy(rootObject);
         tileState = TileState.Empty;
+
+        GameHandler.PickupRoot();
     }
 
     IEnumerator growRoot () {
