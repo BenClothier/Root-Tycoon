@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
+    public static event Action OnGameStart;
+
     public static AnimationCurve NormalDistribution;
 
     public static event Action OnRootPickup;
@@ -20,5 +22,9 @@ public class GameHandler : MonoBehaviour
 
     private void Awake() {
         NormalDistribution = normalDistr;
+    }
+
+    private void Start() {
+        OnGameStart?.Invoke();
     }
 }

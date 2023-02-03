@@ -9,7 +9,7 @@ public class RootRenderer : MonoBehaviour
 
     private RootAttributes attributes;
 
-    private void Inititialise(RootAttributes attributes) {
+    public void Inititialise(RootAttributes attributes) {
         this.attributes = attributes;
         upperBone.localScale = new Vector3(attributes.OverallGirth, 1, attributes.OverallGirth);
         lowerBone.localScale = new Vector3(attributes.LowerGirth, attributes.Length, attributes.LowerGirth);
