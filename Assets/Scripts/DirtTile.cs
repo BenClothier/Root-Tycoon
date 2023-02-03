@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class DirtTile : MonoBehaviour
 {
+    private static readonly float TIME_TO_GROW = 15;
+
     public enum TileState {
         Empty,
         Growing,
         Grown
     }
-    [SerializeField] private TileState tileState = TileState.Empty;
-    [SerializeField] private Root root;
+    [SerializeField] private TileState tileState = TileState.Empty;  
+    [SerializeField] private RootRenderer root;
 
     private bool isFocused = false;
 
     private float originalScale;
     private float focusedScale;
 
-    GameObject rootObject;
+    RootRenderer rootObject;
     Coroutine growCoroutine;
 
     private void Awake() {
@@ -46,8 +48,11 @@ public class DirtTile : MonoBehaviour
     }
 
     private void CreateRoot () {
-        rootObject = Instantiate(root.Model, transform);
-        rootObject.transform.localPosition = new Vector3(0, 0.75f, 0);
+        rootObject = Instantiate(root, transform.position, Quaternion.Euler(0, 360 * UnityEngine.Random.value, 0));
+        rootObject.Inititialise(new RootAttributes(){
+            OverallGirth = 1.5f,
+            LowerGirth = 0.5f,
+        });
 
         tileState = TileState.Growing;
 
@@ -63,8 +68,8 @@ public class DirtTile : MonoBehaviour
 
     IEnumerator growRoot () {
         float progress = 0f;
-        while (progress <= root.TimeToGrow) {
-            rootObject.transform.localScale = Vector3.Lerp(root.StartScale, root.EndScale, progress / root.TimeToGrow);
+        while (progress <= TIME_TO_GROW) {
+            rootObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, progress / TIME_TO_GROW);
             progress += Time.deltaTime;
             yield return null;
         }
