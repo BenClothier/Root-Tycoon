@@ -13,6 +13,10 @@ public class Environment : MonoBehaviour
     private const int TILES_X = 5;
     private const int TILES_Z = 5;
 
+    bool swayIncreasing = true;
+    float sway = -1;
+    float maxSway = 8;
+
     private void CreateDirtTiles () {
         for (int x = 0; x < TILES_X; x++) {
             for (int z = 0; z < TILES_Z; z++) {
@@ -61,5 +65,27 @@ public class Environment : MonoBehaviour
 
         CreateDirtTiles();
         CreateGrass();
+    }
+
+    private void Update() {
+        sway += swayIncreasing ? Time.deltaTime : -Time.deltaTime;
+
+        if (sway > 1) {
+            sway = 1;
+            swayIncreasing = false;
+        }
+        if (sway < -1) {
+            sway = -1;
+            swayIncreasing = true;
+        }
+
+        GrassSway();
+    }
+
+    private void GrassSway () {
+        foreach (Transform child in grassContainer) {
+            float swayRotation = maxSway * sway;
+            child.rotation = Quaternion.Euler(swayRotation, 0, swayRotation);
+        }
     }
 }
