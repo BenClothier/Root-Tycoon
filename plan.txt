@@ -1,0 +1,13 @@
+1. Harvest / Harvest Summary (16 grid on screen, sell button) - LUCAS
+2. Inventory (click on root in harvest screen to store, click on root in inventory, while in harvest screen, to unstore) -LUCAS
+3. Click on plot then click on root in inventory to plant -LUCAS
+
+4. Coherance
+5. Market (demand, sell, total money)
+6. Buy competitors farm
+
+
+
+
+Nice To Haves:
+URP
