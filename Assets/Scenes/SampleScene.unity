@@ -18408,6 +18408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684209458}
   - component: {fileID: 684209459}
+  - component: {fileID: 684209460}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -18451,6 +18452,18 @@ MonoBehaviour:
   grassPrefabs:
   - {fileID: 919132149155446097, guid: 6e317ce0b89635e4a970ff8dfa0f7e77, type: 3}
   - {fileID: 919132149155446097, guid: 271f6c8132710e949bc5c02b5ea6b3e4, type: 3}
+--- !u!114 &684209460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684209457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0506f541550484486c7a733cac19f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &685436602
 GameObject:
   m_ObjectHideFlags: 0
@@ -44643,7 +44656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -46014,6 +46026,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -46065,6 +46078,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!1 &1758289874
 GameObject:
@@ -47057,6 +47071,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
