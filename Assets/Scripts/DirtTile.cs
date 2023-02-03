@@ -13,14 +13,15 @@ public class DirtTile : MonoBehaviour
     }
     [SerializeField] private TileState tileState = TileState.Empty;  
     [SerializeField] private RootRenderer root;
+    [SerializeField] private Transform[] sowPositions;
 
     private bool isFocused = false;
 
     private float originalScale;
     private float focusedScale;
-
-    RootRenderer rootObject;
     Coroutine growCoroutine;
+
+    private List<RootRenderer> rootObjects = new();
 
     private void Awake() {
         originalScale = transform.localScale.x;
@@ -29,7 +30,7 @@ public class DirtTile : MonoBehaviour
 
     private void Update() {
         if (isFocused && Input.GetMouseButtonDown(0) && tileState == TileState.Empty) {
-            CreateRoot();
+            CreateRoot(RootAttributes.Default());
         }
 
         if (isFocused && Input.GetMouseButtonDown(1) && tileState == TileState.Grown) {
@@ -47,20 +48,23 @@ public class DirtTile : MonoBehaviour
         transform.localScale = new Vector3(originalScale, transform.localScale.y, originalScale);
     }
 
-    private void CreateRoot () {
-        rootObject = Instantiate(root, transform.position, Quaternion.Euler(0, 360 * UnityEngine.Random.value, 0));
-        rootObject.Inititialise(new RootAttributes(){
-            OverallGirth = 1.5f,
-            LowerGirth = 0.5f,
-        });
+    private void CreateRoot (RootAttributes attributes) {
+        foreach (Transform sowPosition in sowPositions){
+            var rootObject = Instantiate(root, sowPosition.position, Quaternion.Euler(0, 360 * UnityEngine.Random.value, 0), transform);
+            rootObject.Inititialise(RootAttributes.MakeMutatedCopy(attributes));
+            rootObjects.Add(rootObject);
+        }
 
         tileState = TileState.Growing;
 
-        growCoroutine = StartCoroutine("growRoot");
+        growCoroutine = StartCoroutine(growRoot());
     }
 
     private void PickupRoot () {
-        Destroy(rootObject);
+        foreach (var rootObject in rootObjects){
+            Destroy(rootObject);
+        }
+        rootObjects.Clear();
         tileState = TileState.Empty;
 
         GameHandler.PickupRoot();
@@ -69,7 +73,9 @@ public class DirtTile : MonoBehaviour
     IEnumerator growRoot () {
         float progress = 0f;
         while (progress <= TIME_TO_GROW) {
-            rootObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, progress / TIME_TO_GROW);
+            foreach (var rootObject in rootObjects){
+                rootObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, progress / TIME_TO_GROW);
+            }
             progress += Time.deltaTime;
             yield return null;
         }
