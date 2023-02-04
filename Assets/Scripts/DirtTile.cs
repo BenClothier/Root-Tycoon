@@ -63,13 +63,10 @@ public class DirtTile : MonoBehaviour
     }
 
     private void PickupRoot () {
-        foreach (var rootObject in rootObjects){
-            Destroy(rootObject);
-        }
-        rootObjects.Clear();
-        tileState = TileState.Empty;
+        HarvestUI.HarvestRoots(rootObjects);
 
-        HarvestUI.HarvestRoots(sowPositions);
+        tileState = TileState.Empty;
+        rootObjects.Clear();
     }
 
     IEnumerator growRoot () {
