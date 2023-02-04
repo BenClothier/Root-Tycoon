@@ -618,6 +618,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -681,6 +682,10 @@ PrefabInstance:
       value: farmland (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3153691532245069099}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &490790278869500610 stripped
 Transform:
@@ -692,6 +697,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fce7e04911099a64d8e367ea80036087, type: 3}
@@ -755,6 +761,7 @@ PrefabInstance:
       value: farmland_end_inverted (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: fce7e04911099a64d8e367ea80036087, type: 3}
 --- !u!4 &273229629229785304 stripped
 Transform:
@@ -766,6 +773,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -817,6 +825,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!4 &2273748842518578957 stripped
 Transform:
@@ -839,6 +848,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -902,6 +912,7 @@ PrefabInstance:
       value: farmland (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &70134963604745250 stripped
 Transform:
@@ -913,6 +924,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a7a5b2996759e194283c4838501841d4, type: 3}
@@ -976,6 +988,7 @@ PrefabInstance:
       value: farmland_end (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a7a5b2996759e194283c4838501841d4, type: 3}
 --- !u!4 &1018822548905307845 stripped
 Transform:
@@ -987,6 +1000,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -1038,6 +1052,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!4 &1392032582253581956 stripped
 Transform:
@@ -1060,6 +1075,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -1123,6 +1139,10 @@ PrefabInstance:
       value: farmland (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9207537845932662159}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &1541770432327612524 stripped
 Transform:
@@ -1134,6 +1154,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fce7e04911099a64d8e367ea80036087, type: 3}
@@ -1197,6 +1218,7 @@ PrefabInstance:
       value: farmland_end_inverted (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: fce7e04911099a64d8e367ea80036087, type: 3}
 --- !u!4 &1313721294940658226 stripped
 Transform:
@@ -1208,6 +1230,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -1271,6 +1294,10 @@ PrefabInstance:
       value: farmland (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 822526583960836159}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &2120624469613697197 stripped
 Transform:
@@ -1282,6 +1309,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -1333,6 +1361,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!4 &3481457839190666861 stripped
 Transform:
@@ -1355,6 +1384,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -1406,6 +1436,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!4 &3636578081203755008 stripped
 Transform:
@@ -1428,6 +1459,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -1491,6 +1523,10 @@ PrefabInstance:
       value: farmland (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2024667122271946949}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &3235252675269838042 stripped
 Transform:
@@ -1502,6 +1538,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a7a5b2996759e194283c4838501841d4, type: 3}
@@ -1565,6 +1602,7 @@ PrefabInstance:
       value: farmland_end (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a7a5b2996759e194283c4838501841d4, type: 3}
 --- !u!4 &2890670925348908830 stripped
 Transform:
@@ -1576,6 +1614,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fce7e04911099a64d8e367ea80036087, type: 3}
@@ -1639,6 +1678,7 @@ PrefabInstance:
       value: farmland_end_inverted (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: fce7e04911099a64d8e367ea80036087, type: 3}
 --- !u!4 &3864126397059477207 stripped
 Transform:
@@ -1650,6 +1690,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -1701,6 +1742,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!4 &3424116131979557408 stripped
 Transform:
@@ -1723,6 +1765,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -1774,6 +1817,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!4 &3417178535844004716 stripped
 Transform:
@@ -1796,6 +1840,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -1847,6 +1892,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!4 &2763594959089959774 stripped
 Transform:
@@ -1869,6 +1915,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -1920,6 +1967,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!4 &2874473465519412948 stripped
 Transform:
@@ -1942,6 +1990,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a7a5b2996759e194283c4838501841d4, type: 3}
@@ -2005,6 +2054,7 @@ PrefabInstance:
       value: farmland_end
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a7a5b2996759e194283c4838501841d4, type: 3}
 --- !u!4 &4052325467615136698 stripped
 Transform:
@@ -2016,6 +2066,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -2067,6 +2118,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!114 &3669880387752840309 stripped
 MonoBehaviour:
@@ -2089,6 +2141,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -2152,6 +2205,10 @@ PrefabInstance:
       value: farmland (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2633905139369180150}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &4934689513256788137 stripped
 Transform:
@@ -2163,6 +2220,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fce7e04911099a64d8e367ea80036087, type: 3}
@@ -2226,6 +2284,7 @@ PrefabInstance:
       value: farmland_end_inverted
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: fce7e04911099a64d8e367ea80036087, type: 3}
 --- !u!4 &4847884429196038893 stripped
 Transform:
@@ -2237,6 +2296,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -2300,6 +2360,10 @@ PrefabInstance:
       value: farmland
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1021392635712778709}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &4823644614868394296 stripped
 Transform:
@@ -2311,6 +2375,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -2362,6 +2427,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!114 &4148327368354983229 stripped
 MonoBehaviour:
@@ -2384,6 +2450,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -2447,6 +2514,10 @@ PrefabInstance:
       value: farmland (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5141050205284099543}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &5572424038019841962 stripped
 Transform:
@@ -2458,6 +2529,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -2521,6 +2593,10 @@ PrefabInstance:
       value: farmland (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2001873913202574816}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &5545707126335685500 stripped
 Transform:
@@ -2532,6 +2608,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -2583,6 +2660,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!114 &2408037139064949623 stripped
 MonoBehaviour:
@@ -2605,6 +2683,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -2656,6 +2735,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!114 &2699298077471286622 stripped
 MonoBehaviour:
@@ -2678,6 +2758,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -2741,6 +2822,10 @@ PrefabInstance:
       value: farmland (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6694852158817350668}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &6828868570154065214 stripped
 Transform:
@@ -2752,6 +2837,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a7a5b2996759e194283c4838501841d4, type: 3}
@@ -2815,6 +2901,7 @@ PrefabInstance:
       value: farmland_end (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a7a5b2996759e194283c4838501841d4, type: 3}
 --- !u!4 &6606700452456141478 stripped
 Transform:
@@ -2826,6 +2913,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -2877,6 +2965,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!114 &1157595886077542168 stripped
 MonoBehaviour:
@@ -2899,6 +2988,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -2962,6 +3052,10 @@ PrefabInstance:
       value: farmland (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6646242316244564676}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &7383689937059564227 stripped
 Transform:
@@ -2973,6 +3067,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -3036,6 +3131,10 @@ PrefabInstance:
       value: farmland (15)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5310711457436175815}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &7385846038418165530 stripped
 Transform:
@@ -3047,6 +3146,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -3110,6 +3210,10 @@ PrefabInstance:
       value: farmland (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9220679197896400273}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &7109779978086007553 stripped
 Transform:
@@ -3121,6 +3225,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -3172,6 +3277,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!114 &1528812149348381447 stripped
 MonoBehaviour:
@@ -3194,6 +3300,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -3245,6 +3352,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!114 &1689611560158512395 stripped
 MonoBehaviour:
@@ -3267,6 +3375,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -3330,6 +3439,10 @@ PrefabInstance:
       value: farmland (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1177357948295017541}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &7768456500798818067 stripped
 Transform:
@@ -3341,6 +3454,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -3404,6 +3518,10 @@ PrefabInstance:
       value: farmland (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4965317726636128839}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &7541187067228406787 stripped
 Transform:
@@ -3415,6 +3533,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871726631451009747}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -3466,6 +3585,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!114 &425171360906587595 stripped
 MonoBehaviour:
@@ -3488,6 +3608,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6708361870994794010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
@@ -3551,6 +3672,10 @@ PrefabInstance:
       value: farmland (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8349244745160960019}
   m_SourcePrefab: {fileID: 100100000, guid: 298849f9546eb2d42bc0f7adf547d3c2, type: 3}
 --- !u!4 &8981573371431221238 stripped
 Transform:
