@@ -28,7 +28,7 @@ MonoBehaviour:
   localHttpServerPort: 42006
   localDevelopmentMode: 1
   useDebugStreams: 0
-  organizationID: cff3codbo1hvesc40n30
-  projectID: cff3codbo1hvesc40n3g
+  organizationID: 
+  projectID: 
   projectName: Default Project
   playApiEndpoint: https://api.prod.coherence.io/v1/play
