@@ -22,6 +22,8 @@ public class GameUI : MonoBehaviour
         Vector3 offsetFromCamera = (camera.forward * 2f) - (camera.right * 0.4f) - (camera.up * 0.65f);
 
         for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
+            if (PlayerStats.GetInventoryItem(i) == null) continue;
+
             Vector3 individualOffset = camera.right * i * 0.25f;
 
             Vector3 position = camera.position + offsetFromCamera + individualOffset;
@@ -29,6 +31,8 @@ public class GameUI : MonoBehaviour
 
             rootObjects[i] = Instantiate(rootButtonPrefab, position, rotation);
             rootObjects[i].transform.parent = camera;
+
+            rootObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(PlayerStats.GetInventoryItem(i));
         }
     }
 

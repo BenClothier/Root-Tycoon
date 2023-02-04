@@ -13,19 +13,13 @@ public class HarvestUI : MonoBehaviour
 
     GameObject[] inventoryRoots = new GameObject[4];
 
-    public static bool IsPanelActive = false;
-
     List<RootAttributes> rootAttributes;
 
     [SerializeField] private GameObject gameUI;
 
-    public static event Action<List<RootAttributes>> OnHarvest;
-    public static void HarvestRoots (List<RootAttributes> rootAttributes) {
-        OnHarvest?.Invoke(rootAttributes);
-    }
-
-    void Awake () {
-        OnHarvest += setupUI;
+    private void OnDisable() {
+        DestroyHarvestRoots();
+        DestroyInventoryRoots();
     }
 
     private void DestroyHarvestRoots () {
@@ -42,16 +36,10 @@ public class HarvestUI : MonoBehaviour
         }
     }
 
-    public void setupUI (List<RootAttributes> rootAttributes) {
-        gameUI.SetActive(false);
-
-        IsPanelActive = true;
-
-        // Enable Havest UI Panel
-        harvestPanel.SetActive(true);
-
+    public void SetupUI (List<RootAttributes> rootAttributes) {
         this.rootAttributes = rootAttributes;
         UpdateHarvest();
+        UpdateInventory();
     }
 
     public void UpdateHarvest () {
@@ -124,7 +112,7 @@ public class HarvestUI : MonoBehaviour
         DestroyHarvestRoots();
         DestroyInventoryRoots();
 
-        IsPanelActive = false;
+        CanvasManager.IsHarvestActive = false;
 
         gameUI.SetActive(true);
     }

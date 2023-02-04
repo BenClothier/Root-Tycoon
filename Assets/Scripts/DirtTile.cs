@@ -31,7 +31,7 @@ public class DirtTile : MonoBehaviour
     }
 
     private void Update() {
-        if (HarvestUI.IsPanelActive) return;
+        if (CanvasManager.IsHarvestActive) return;
         
         if (isFocused && Input.GetMouseButtonDown(0) && tileState == TileState.Empty) {
             PlantRoots(RootAttributes.Default());
@@ -43,14 +43,14 @@ public class DirtTile : MonoBehaviour
     }
 
     private void OnMouseEnter() {
-        if (HarvestUI.IsPanelActive) return;
+        if (CanvasManager.IsHarvestActive) return;
 
         isFocused = true;
         transform.localScale = new Vector3(focusedScale, transform.localScale.y, focusedScale);
     }
 
     private void OnMouseExit() {
-        if (HarvestUI.IsPanelActive) return;
+        if (CanvasManager.IsHarvestActive) return;
         
         isFocused = false;
         transform.localScale = new Vector3(originalScale, transform.localScale.y, originalScale);
@@ -70,7 +70,7 @@ public class DirtTile : MonoBehaviour
     public void HarvestRoots () {
         Debug.Log(roots.ToList().Count);
 
-        HarvestUI.HarvestRoots(roots.Select(rr => rr.GetAttributes()).ToList());
+        CanvasManager.HarvestRoots(roots.Select(rr => rr.GetAttributes()).ToList());
 
         tileState = TileState.Empty;
         ResetRootScale();
