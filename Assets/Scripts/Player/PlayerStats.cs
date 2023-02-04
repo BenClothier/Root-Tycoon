@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public static class PlayerStats
 {
-    public const int INVENTORY_SIZE = 6;
+    public const int INVENTORY_SIZE = 4;
 
-    RootAttributes[] inventory = new RootAttributes[INVENTORY_SIZE]; // Can only keep 6 roots in the inventory
+    static RootAttributes[] inventory = new RootAttributes[INVENTORY_SIZE]; // Can only keep 6 roots in the inventory
+    public static int money = 500;
 
     /// <summary>
     /// Adds a root to the inventory.
     /// </summary>
     /// <param name="rootAttributes">Root being stored</param>
     /// <returns>True if successfully added, false if inventory is full</returns>
-    public bool AddToInventory (RootAttributes rootAttributes) {
+    public static bool AddToInventory (RootAttributes rootAttributes) {
         for (int i = 0 ; i < inventory.Length; i++) {
             if (inventory[i] == null) {
                 inventory[i] = rootAttributes;
@@ -28,7 +29,7 @@ public class PlayerStats : MonoBehaviour
     /// </summary>
     /// <param name="rootAttributes">Root to remove</param>
     /// <returns>True if successfulyl removed, false if the root is not in the inventory</returns>
-    public bool RemoveFromInventory (RootAttributes rootAttributes) {
+    public static bool RemoveFromInventory (RootAttributes rootAttributes) {
         for (int i = 0; i < inventory.Length; i++) {
             if (inventory[i] == rootAttributes) {
                 inventory[i] = null;
@@ -38,9 +39,20 @@ public class PlayerStats : MonoBehaviour
         return false;
     }
 
-    public RootAttributes GetInventoryItem (int index) {
+    public static RootAttributes GetInventoryItem (int index) {
         if (index < 0 || index >= INVENTORY_SIZE) return null;
 
         return inventory[index];
+    }
+
+    public static void AddMoney (int amount) {
+        money += amount;
+    }
+
+    public static bool RemoveMoney (int amount) {
+        if (money - amount < 0) return false;
+
+        money -= amount;
+        return true;
     }
 }

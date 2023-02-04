@@ -5,32 +5,27 @@ using UnityEngine;
 
 public class HarvestUI : MonoBehaviour
 {
-    [SerializeField] private PlayerStats playerStats;
-    [SerializeField] private Transform playerCamera;
+    [SerializeField] private Transform camera;
     [SerializeField] private GameObject harvestPanel;
     [SerializeField] private GameObject rootButtonPrefab;
 
-    GameObject[] rootObjects = new GameObject[16];
+    GameObject[] rootObjects = new GameObject[20];
 
-    GameObject[] inventoryRoots = new GameObject[6];
+    GameObject[] inventoryRoots = new GameObject[4];
 
     public static bool IsPanelActive = false;
 
-    List<RootRenderer> rootRenderers;
+    List<RootAttributes> rootAttributes;
 
-    public static event Action<List<RootRenderer>> OnHarvest;
-    public static void HarvestRoots (List<RootRenderer> rootTransforms) {
-        OnHarvest?.Invoke(rootTransforms);
+    [SerializeField] private GameObject gameUI;
+
+    public static event Action<List<RootAttributes>> OnHarvest;
+    public static void HarvestRoots (List<RootAttributes> rootAttributes) {
+        OnHarvest?.Invoke(rootAttributes);
     }
 
-    private void OnEnable() {
+    void Awake () {
         OnHarvest += setupUI;
-        OnHarvest += _ => UpdateInventory();
-    }
-
-    private void OnDisable() {
-        OnHarvest -= setupUI;
-        OnHarvest -= _ => UpdateInventory();
     }
 
     private void DestroyHarvestRoots () {
@@ -47,71 +42,77 @@ public class HarvestUI : MonoBehaviour
         }
     }
 
-    public void setupUI (List<RootRenderer> rootRenderers) {
+    public void setupUI (List<RootAttributes> rootAttributes) {
+        gameUI.SetActive(false);
+
         IsPanelActive = true;
 
         // Enable Havest UI Panel
         harvestPanel.SetActive(true);
 
-        this.rootRenderers = rootRenderers;
+        this.rootAttributes = rootAttributes;
         UpdateHarvest();
     }
 
     public void UpdateHarvest () {
         DestroyHarvestRoots();
 
-        // Move roots onto the UI
-        for (int i = 0; i < rootRenderers.Count; i++) {
-            float xIndex = (i % 4) - 1.5f;
-            float yIndex = (i / 4) - 1.5f;
+        Vector3 offsetFromCamera = (camera.forward * 2f) - (camera.right * 0.85f) - (camera.up * 0.35f);
 
-            // Move to camera
-            Vector3 offset = (playerCamera.right * xIndex * 0.3f) + (playerCamera.up * (yIndex + 0.5f) * 0.3f);
-            Vector3 position = (playerCamera.position + playerCamera.forward * 2.75f) + offset;
+        for (int i = 0; i < rootAttributes.Count; i++) {
+            int xPos = i % 5;
+            int yPos = i / 5;
 
-            // Create the root button objects
-            rootObjects[i] = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
-            rootObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(rootRenderers[i].GetAttributes());
+            Vector3 individualOffset = (camera.right * xPos + camera.up * yPos) * 0.25f;
 
-            int index = i;
-            rootObjects[i].GetComponent<HarvestRoot>().OnClick += delegate{ AttemptAddToInventory(index); };
+            Vector3 position = camera.position + offsetFromCamera + individualOffset;
+            Quaternion rotation = camera.rotation * Quaternion.Euler(0, 0, -20);
+
+            rootObjects[i] = Instantiate(rootButtonPrefab, position, rotation);
+            rootObjects[i].transform.parent = camera;
+            rootObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(rootAttributes[i]);
+
+            int ix = i;
+            rootObjects[i].GetComponent<HarvestRoot>().OnClick += delegate { HarvestRootButton(ix); };
         }
     }
 
     public void UpdateInventory () {
         DestroyInventoryRoots();
 
+        Vector3 offsetFromCamera = (camera.forward * 2f) + (camera.right * 0.8f) - (camera.up * 0.35f);
+
         for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
-            if (playerStats.GetInventoryItem(i) == null) continue;
+            if (PlayerStats.GetInventoryItem(i) == null) continue;
 
-            float index = i - 2.5f;
-            Vector3 offset = (playerCamera.right * index * 0.35f) + (playerCamera.up * -0.75f);
-            Vector3 position = (playerCamera.position + playerCamera.forward * 2.75f) + offset;
+            Vector3 individualOffset = (camera.up * i) * 0.25f;
 
-            inventoryRoots[i] = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
-            inventoryRoots[i].GetComponentInChildren<RootRenderer>().Inititialise(playerStats.GetInventoryItem(i));
+            Vector3 position = camera.position + offsetFromCamera + individualOffset;
+            Quaternion rotation = camera.rotation * Quaternion.Euler(0, 0, -20);
+
+            inventoryRoots[i] = Instantiate(rootButtonPrefab, position, rotation);
+            inventoryRoots[i].transform.parent = camera;
+            inventoryRoots[i].GetComponentInChildren<RootRenderer>().Inititialise(PlayerStats.GetInventoryItem(i));
+
             int ix = i;
-            inventoryRoots[i].GetComponent<HarvestRoot>().OnClick += delegate { 
-                playerStats.RemoveFromInventory(playerStats.GetInventoryItem(ix)); 
-                UpdateInventory(); 
-            };
-
+            inventoryRoots[i].GetComponent<HarvestRoot>().OnClick += delegate { InventoryRootButton(ix); };
         }
     }
 
-    public void AttemptAddToInventory (int harvestIndex) {
-        bool success = playerStats.AddToInventory(rootRenderers[harvestIndex].GetAttributes());
-        if (!success) return;
+    public void InventoryRootButton (int inventoryIndex) {
+        RootAttributes ra = inventoryRoots[inventoryIndex].GetComponentInChildren<RootRenderer>().GetAttributes();
+        rootAttributes.Add(ra);
+        PlayerStats.RemoveFromInventory(PlayerStats.GetInventoryItem(inventoryIndex)); 
 
-        rootRenderers.Remove(rootRenderers[harvestIndex]);
         UpdateHarvest();
         UpdateInventory();
     }
 
-    public void SellInventoryRoot (int inventoryIndex) {
-        bool success = playerStats.RemoveFromInventory(playerStats.GetInventoryItem(inventoryIndex)); 
+    public void HarvestRootButton (int harvestIndex) {
+        bool success = PlayerStats.AddToInventory(rootAttributes[harvestIndex]);
         if (!success) return;
 
+        rootAttributes.Remove(rootAttributes[harvestIndex]);
         UpdateHarvest();
         UpdateInventory();
     }
@@ -124,5 +125,7 @@ public class HarvestUI : MonoBehaviour
         DestroyInventoryRoots();
 
         IsPanelActive = false;
+
+        gameUI.SetActive(true);
     }
 }

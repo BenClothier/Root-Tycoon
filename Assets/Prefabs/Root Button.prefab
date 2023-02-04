@@ -81,6 +81,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1790801217247830394}
     m_Modifications:
     - target: {fileID: 284074294598707891, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
@@ -131,7 +132,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2247855971180595728, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701832753806334788, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3026262477c194ba50821e31433c2b, type: 3}
 --- !u!4 &123417582581115087 stripped
 Transform:
