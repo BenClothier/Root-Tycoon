@@ -25,7 +25,7 @@ public class DirtTile : MonoBehaviour
 
     private void Awake() {
         originalScale = transform.localScale.x;
-        focusedScale = originalScale * 1.15f;
+        focusedScale = originalScale * 1.075f;
     }
 
     private void Update() {
