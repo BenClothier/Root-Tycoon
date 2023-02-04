@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3399971660260200541}
   - component: {fileID: 3401908294113421359}
   - component: {fileID: 5857119987878172420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Root Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,9 +154,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4447715891971285020, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 147834492086506725, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
       propertyPath: m_Name
       value: root
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2162618994395625142, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
       propertyPath: m_LocalScale.x
@@ -170,10 +186,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8324806159390337579, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8743813690021804245, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a2401388a4e02604bb8647c22864618e, type: 2}
+    - target: {fileID: 8960710780784239575, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
 --- !u!4 &5167337959137131993 stripped
@@ -257,6 +281,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 25e9d5d7e7e38ae44897932f33f8027b, type: 3}
       propertyPath: m_Name
       value: Plant_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 25e9d5d7e7e38ae44897932f33f8027b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25e9d5d7e7e38ae44897932f33f8027b, type: 3}
