@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lowerBone: {fileID: 5167337959137131993}
   upperBone: {fileID: 8676909971158402163}
+  meshRenderer: {fileID: 2247855971180595728}
 --- !u!1001 &7379633019894084293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,13 +143,18 @@ PrefabInstance:
     - target: {fileID: 8743813690021804245, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a2401388a4e02604bb8647c22864618e, type: 2}
+      objectReference: {fileID: 2100000, guid: b17c15656c6aeee40b6e6dba00d9a17b, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8838671377227030571}
   m_SourcePrefab: {fileID: 100100000, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
+--- !u!137 &2247855971180595728 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8743813690021804245, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}
+  m_PrefabInstance: {fileID: 7379633019894084293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5167337959137131993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2440857947354763036, guid: 2ca89b96585f98042b69dea743ca2291, type: 3}

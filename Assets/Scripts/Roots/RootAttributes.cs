@@ -11,12 +11,12 @@ public class RootAttributes
     public float LowerGirth { get; set; }
 
     public float[] AttributeVector => new float[] { 
-        UpperColor.r / 255,
-        UpperColor.g / 255,
-        UpperColor.b / 255,
-        LowerColor.r / 255,
-        LowerColor.g / 255,
-        LowerColor.b / 255,
+        UpperColor.r,
+        UpperColor.g,
+        UpperColor.b,
+        LowerColor.r,
+        LowerColor.g,
+        LowerColor.b,
         (Length - 1) / 2,
         (OverallGirth - 1) / 4,
         (LowerGirth - .5f) / 1.5f
@@ -24,8 +24,8 @@ public class RootAttributes
 
     public static RootAttributes Default() => new RootAttributes()
     {
-        UpperColor = new Color(192, 184, 144, 255),
-        LowerColor = new Color(192, 184, 144, 255),
+        UpperColor = new Color((float)192/255, (float)184/255, (float)144/255, 1),
+        LowerColor = new Color(.9f, .9f, .9f, 1),
         Length = 1,
         OverallGirth = 1,
         LowerGirth = 1,
@@ -33,8 +33,8 @@ public class RootAttributes
 
     public static RootAttributes LowerBound() => new RootAttributes()
     {
-        UpperColor = new Color(50, 50, 50, 255),
-        LowerColor = new Color(50, 50, 50, 255),
+        UpperColor = new Color(.2f, .2f, .2f, 1),
+        LowerColor = new Color(.2f, .2f, .2f, 1),
         Length = 1,
         OverallGirth = 1,
         LowerGirth = .5f,
@@ -42,8 +42,8 @@ public class RootAttributes
 
     public static RootAttributes UpperBound() => new RootAttributes()
     {
-        UpperColor = new Color(205, 205, 205, 255),
-        LowerColor = new Color(205, 205, 205, 255),
+        UpperColor = new Color(.8f, .8f, .8f, 1),
+        LowerColor = new Color(.8f, .8f, .8f, 1),
         Length = 3,
         OverallGirth = 5,
         LowerGirth = 2f,
