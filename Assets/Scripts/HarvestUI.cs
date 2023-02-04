@@ -1,18 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HarvestUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public static event Action<Transform[]> OnHarvest;
+    public static void HarvestRoots (Transform[] rootTransforms) {
+        OnHarvest?.Invoke(rootTransforms);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnEnable() {
+        OnHarvest += moveRoots;
+    }
+
+    private void OnDisable() {
+        OnHarvest -= moveRoots;
+    }
+
+    public void moveRoots (Transform[] rootTransforms) {
+        foreach (Transform rootTrans in rootTransforms) {
+            Debug.Log(rootTrans);
+            rootTrans.position = Camera.main.transform.position + Camera.main.transform.forward * 2;
+        }
     }
 }

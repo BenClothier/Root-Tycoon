@@ -67,7 +67,7 @@ public class DirtTile : MonoBehaviour
         rootObjects.Clear();
         tileState = TileState.Empty;
 
-        GameHandler.PickupRoot();
+        HarvestUI.HarvestRoots(sowPositions);
     }
 
     IEnumerator growRoot () {
