@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,18 @@ public class HarvestRoot : MonoBehaviour
 
     [HideInInspector] public RootAttributes rootAttributes;
 
+    public event Action OnClick;
+
     private void OnEnable() {
         focusedScale = originalScale * 1.15f;
 
         OnMouseExit();
+    }
+
+    private void Update() {
+        if (isFocused && Input.GetMouseButtonDown(0)) {
+            OnClick?.Invoke();
+        }
     }
 
     private void OnMouseEnter() {

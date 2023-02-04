@@ -12,6 +12,10 @@ public class HarvestUI : MonoBehaviour
 
     GameObject[] rootObjects = new GameObject[16];
 
+    GameObject[] inventoryRoots = new GameObject[6];
+
+    public static bool IsPanelActive = false;
+
     public static event Action<List<RootRenderer>> OnHarvest;
     public static void HarvestRoots (List<RootRenderer> rootTransforms) {
         OnHarvest?.Invoke(rootTransforms);
@@ -28,6 +32,8 @@ public class HarvestUI : MonoBehaviour
     }
 
     public void moveRoots (List<RootRenderer> rootRenderers) {
+        IsPanelActive = true;
+
         // Enable Havest UI Panel
         harvestPanel.SetActive(true);
 
@@ -44,10 +50,16 @@ public class HarvestUI : MonoBehaviour
             rootObjects[i] = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
             rootObjects[i].GetComponent<RootRenderer>().Inititialise(rootRenderers[i].GetAttributes());
             rootObjects[i].GetComponent<HarvestRoot>().rootAttributes = rootRenderers[i].GetAttributes();
+            // rootObjects[i].GetComponent<HarvestRoot>().OnClick += UpdateInventory();
         }
     }
 
     public void UpdateInventory () {
+        for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
+            if (inventoryRoots[i] == null) continue;
+            Destroy(inventoryRoots[i]);
+        }
+
         for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
             if (playerStats.GetInventoryItem(i) == null) continue;
 
@@ -55,7 +67,7 @@ public class HarvestUI : MonoBehaviour
             Vector3 offset = (playerCamera.right * index * 0.35f) + (playerCamera.up * -0.75f);
             Vector3 position = (playerCamera.position + playerCamera.forward * 2.75f) + offset;
 
-            GameObject inventoryRoot = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
+            inventoryRoots[i] = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
         }
     }
 
@@ -67,5 +79,7 @@ public class HarvestUI : MonoBehaviour
         foreach (GameObject rootObject in rootObjects) {
             Destroy(rootObject);
         }
+
+        IsPanelActive = false;
     }
 }
