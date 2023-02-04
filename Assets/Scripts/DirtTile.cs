@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DirtTile : MonoBehaviour
@@ -14,8 +16,7 @@ public class DirtTile : MonoBehaviour
 
     public TileState tileState = TileState.Empty;
 
-    [SerializeField] private RootRenderer root;
-    [SerializeField] private Transform[] sowPositions;
+    [SerializeField] private RootRenderer[] roots;
 
     private bool isFocused = false;
 
@@ -23,20 +24,19 @@ public class DirtTile : MonoBehaviour
     private float focusedScale;
     Coroutine growCoroutine;
 
-    private List<RootRenderer> rootObjects = new();
-
     private void Awake() {
         originalScale = transform.localScale.x;
         focusedScale = originalScale * 1.075f;
+        ResetRootScale();
     }
 
     private void Update() {
         if (isFocused && Input.GetMouseButtonDown(0) && tileState == TileState.Empty) {
-            CreateRoot(RootAttributes.Default());
+            PlantRoots(RootAttributes.Default());
         }
 
         if (isFocused && Input.GetMouseButtonDown(1) && tileState == TileState.Grown) {
-            PickupRoot();
+            HarvestRoots();
         }
     }
 
@@ -50,33 +50,39 @@ public class DirtTile : MonoBehaviour
         transform.localScale = new Vector3(originalScale, transform.localScale.y, originalScale);
     }
 
-    private void CreateRoot (RootAttributes attributes) {
-        foreach (Transform sowPosition in sowPositions){
-            var rootObject = Instantiate(root, sowPosition.position, Quaternion.Euler(0, 360 * UnityEngine.Random.value, 0), transform);
-            rootObject.Inititialise(RootAttributes.MakeMutatedCopy(attributes));
-            rootObjects.Add(rootObject);
+    public void PlantRoots (RootAttributes attributes) {
+        foreach (RootRenderer root in roots)
+        {
+            root.transform.rotation = Quaternion.Euler(0, 360 * UnityEngine.Random.value, 0);
+            root.Inititialise(RootAttributes.MakeMutatedCopy(attributes));
         }
 
         tileState = TileState.Growing;
-
-        growCoroutine = StartCoroutine(growRoot());
+        growCoroutine = StartCoroutine(AnimateGrowth());
     }
 
-    private void PickupRoot () {
-        HarvestUI.HarvestRoots(rootObjects);
+    public void HarvestRoots () {
+        HarvestUI.HarvestRoots(roots.ToList());
 
         tileState = TileState.Empty;
-        foreach (RootRenderer rootRenderer in rootObjects) {
-            Destroy(rootRenderer.gameObject);
-        }
-        rootObjects.Clear();
+        ResetRootScale();
     }
 
-    IEnumerator growRoot () {
+    private void ResetRootScale()
+    {
+        foreach (var root in roots)
+        {
+            root.transform.localScale = Vector3.zero;
+        }
+    }
+
+    IEnumerator AnimateGrowth () {
         float progress = 0f;
-        while (progress <= TIME_TO_GROW) {
-            foreach (var rootObject in rootObjects){
-                rootObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, progress / TIME_TO_GROW);
+        while (progress <= TIME_TO_GROW)
+        {
+            foreach (var root in roots)
+            {
+                root.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, progress / TIME_TO_GROW);
             }
             progress += Time.deltaTime;
             yield return null;
