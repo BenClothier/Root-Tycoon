@@ -5,6 +5,27 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+    Coherence.CodeGen.LastInstallation:
+      value: 15011a52561b59
+      flags: 0
+    Coherence.CoherenceSyncSchemasDirty:
+      value: 52
+      flags: 0
+    Coherence.Package.LastInstallation:
+      value: 531f05564b0d
+      flags: 0
+    Coherence.Settings.ActiveSchemas.Hash:
+      value: 05570404500c51035d595f2615210a1345414e72782e20337c781b66bbb86d69
+      flags: 0
+    Coherence.Settings.Email:
+      value: 01545a26004d0859141a0925112e5a0358141727
+      flags: 0
+    Coherence.Settings.UserID:
+      value: 00575255065a0d59025f043415305c4446194a2d
+      flags: 0
+    Coherence.Settings.UserLoginEncryptedToken:
+      value: 5a4906524a532a6b26073a081170665f4506222f1e047325157c4f3bf4cc0209c5e337ddf60314393456a024552c2029f72b2a2ee03a28590436a40043c6214401d448dd08e11744fc311ddaf91af9f6c3ffe3a1f5b8c9ca87febaa6f1e1e9abd7a0b7eaac82efe6bdaeaf9c98c1ebeec89e90d69c89dde888c6fd83b4f9e2e2f6f1ad84f1b2c8dd81acf6a186bea0b6c7a48bc79f83a3bd8d99b0aa54838d674b667a93b4eab78a899647cc7154d28b6258a46a6385b687d1b976dcba80a59c61bea9924391bbb92abc7f97317f4a35360340456f693231
+      flags: 0
     RecentlyUsedSceneGuid-0:
       value: 5104570353040b5e0f585f7046255c444e161c7f792a75642b7a4863b1e2643c
       flags: 0
