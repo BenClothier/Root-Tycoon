@@ -66,6 +66,9 @@ public class DirtTile : MonoBehaviour
         HarvestUI.HarvestRoots(rootObjects);
 
         tileState = TileState.Empty;
+        foreach (RootRenderer rootRenderer in rootObjects) {
+            Destroy(rootRenderer.gameObject);
+        }
         rootObjects.Clear();
     }
 

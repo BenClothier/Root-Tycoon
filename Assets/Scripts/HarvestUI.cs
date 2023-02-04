@@ -41,7 +41,9 @@ public class HarvestUI : MonoBehaviour
             Vector3 direction = (playerCamera.position - rootRenderers[i].transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
 
+            // Create the root button objects
             rootObjects[i] = Instantiate(rootButtonPrefab, position, lookRotation);
+            rootObjects[i].GetComponent<RootRenderer>().Inititialise(rootRenderers[i].GetAttributes());
         }
     }
 

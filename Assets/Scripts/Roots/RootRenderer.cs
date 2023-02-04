@@ -14,4 +14,8 @@ public class RootRenderer : MonoBehaviour
         upperBone.localScale = new Vector3(attributes.OverallGirth, 1, attributes.OverallGirth);
         lowerBone.localScale = new Vector3(attributes.LowerGirth, attributes.Length, attributes.LowerGirth);
     }
+
+    public RootAttributes GetAttributes () {
+        return this.attributes;
+    }
 }
