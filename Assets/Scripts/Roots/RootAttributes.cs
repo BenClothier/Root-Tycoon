@@ -10,6 +10,18 @@ public class RootAttributes
     public float OverallGirth { get; set; }
     public float LowerGirth { get; set; }
 
+    public float[] AttributeVector => new float[] { 
+        UpperColor.r / 255,
+        UpperColor.g / 255,
+        UpperColor.b / 255,
+        LowerColor.r / 255,
+        LowerColor.g / 255,
+        LowerColor.b / 255,
+        (Length - 1) / 2,
+        (OverallGirth - 1) / 4,
+        (LowerGirth - .5f) / 1.5f
+        };
+
     public static RootAttributes Default() => new RootAttributes()
     {
         UpperColor = new Color(192, 184, 144, 255),
