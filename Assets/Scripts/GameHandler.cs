@@ -13,6 +13,7 @@ public class GameHandler : MonoBehaviour
     [SerializeField] private AnimationCurve normalDistr;
     [SerializeField] private AnimationCurve priceDifferenceCurve;
 
+    public static int CurrentSelection = -1;
 
     private void Awake() {
         NormalDistribution = normalDistr;

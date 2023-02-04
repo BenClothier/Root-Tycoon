@@ -34,7 +34,7 @@ public class DirtTile : MonoBehaviour
         if (CanvasManager.IsHarvestActive) return;
         
         if (isFocused && Input.GetMouseButtonDown(0) && tileState == TileState.Empty) {
-            PlantRoots(RootAttributes.Default());
+            PlantRoots(PlayerStats.GetInventoryItem(GameHandler.CurrentSelection));
         }
 
         if (isFocused && Input.GetMouseButtonDown(1) && tileState == TileState.Grown) {
@@ -57,19 +57,21 @@ public class DirtTile : MonoBehaviour
     }
 
     public void PlantRoots (RootAttributes attributes) {
+        if (attributes == null) return;
+
         foreach (RootRenderer root in roots)
         {
             root.transform.rotation = Quaternion.Euler(0, 360 * UnityEngine.Random.value, 0);
             root.Inititialise(RootAttributes.MakeMutatedCopy(attributes));
         }
 
+        PlayerStats.RemoveFromInventory(attributes);
+
         tileState = TileState.Growing;
         growCoroutine = StartCoroutine(AnimateGrowth());
     }
 
     public void HarvestRoots () {
-        Debug.Log(roots.ToList().Count);
-
         CanvasManager.HarvestRoots(roots.Select(rr => rr.GetAttributes()).ToList());
 
         tileState = TileState.Empty;

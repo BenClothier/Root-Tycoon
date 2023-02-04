@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,10 @@ public static class PlayerStats
 {
     public const int INVENTORY_SIZE = 4;
 
-    static RootAttributes[] inventory = new RootAttributes[INVENTORY_SIZE]; // Can only keep 6 roots in the inventory
+    static RootAttributes[] inventory = new RootAttributes[INVENTORY_SIZE] {null, null, null, RootAttributes.Default()}; // Can only keep 6 roots in the inventory
     public static int money = 500;
+
+    public static event Action OnInventoryChange;
 
     /// <summary>
     /// Adds a root to the inventory.
@@ -18,6 +21,7 @@ public static class PlayerStats
         for (int i = 0 ; i < inventory.Length; i++) {
             if (inventory[i] == null) {
                 inventory[i] = rootAttributes;
+                OnInventoryChange?.Invoke();
                 return true;
             }
         }
@@ -33,6 +37,7 @@ public static class PlayerStats
         for (int i = 0; i < inventory.Length; i++) {
             if (inventory[i] == rootAttributes) {
                 inventory[i] = null;
+                OnInventoryChange?.Invoke();
                 return true;
             }
         }
