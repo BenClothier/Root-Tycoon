@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HarvestUI : MonoBehaviour
 {
+    [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Transform playerCamera;
     [SerializeField] private GameObject harvestPanel;
     [SerializeField] private GameObject rootButtonPrefab;
@@ -18,10 +19,12 @@ public class HarvestUI : MonoBehaviour
 
     private void OnEnable() {
         OnHarvest += moveRoots;
+        OnHarvest += _ => UpdateInventory();
     }
 
     private void OnDisable() {
         OnHarvest -= moveRoots;
+        OnHarvest -= _ => UpdateInventory();
     }
 
     public void moveRoots (List<RootRenderer> rootRenderers) {
@@ -34,16 +37,25 @@ public class HarvestUI : MonoBehaviour
             float yIndex = (i / 4) - 1.5f;
 
             // Move to camera
-            Vector3 offset = (playerCamera.right * xIndex * 0.35f) + (playerCamera.up * yIndex * 0.45f);
+            Vector3 offset = (playerCamera.right * xIndex * 0.3f) + (playerCamera.up * (yIndex + 0.5f) * 0.3f);
             Vector3 position = (playerCamera.position + playerCamera.forward * 2.75f) + offset;
 
-            // Look towards the camera
-            Vector3 direction = (playerCamera.position - rootRenderers[i].transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-
             // Create the root button objects
-            rootObjects[i] = Instantiate(rootButtonPrefab, position, lookRotation);
+            rootObjects[i] = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
             rootObjects[i].GetComponent<RootRenderer>().Inititialise(rootRenderers[i].GetAttributes());
+            rootObjects[i].GetComponent<HarvestRoot>().rootAttributes = rootRenderers[i].GetAttributes();
+        }
+    }
+
+    public void UpdateInventory () {
+        for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
+            if (playerStats.GetInventoryItem(i) == null) continue;
+
+            float index = i - 2.5f;
+            Vector3 offset = (playerCamera.right * index * 0.35f) + (playerCamera.up * -0.75f);
+            Vector3 position = (playerCamera.position + playerCamera.forward * 2.75f) + offset;
+
+            GameObject inventoryRoot = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
         }
     }
 

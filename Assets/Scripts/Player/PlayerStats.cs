@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    RootAttributes[] inventory = new RootAttributes[6]; // Can only keep 6 roots in the inventory
+    public const int INVENTORY_SIZE = 6;
+
+    RootAttributes[] inventory = new RootAttributes[INVENTORY_SIZE]; // Can only keep 6 roots in the inventory
 
     /// <summary>
     /// Adds a root to the inventory.
@@ -34,5 +36,11 @@ public class PlayerStats : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public RootAttributes GetInventoryItem (int index) {
+        if (index < 0 || index >= INVENTORY_SIZE) return null;
+
+        return inventory[index];
     }
 }
