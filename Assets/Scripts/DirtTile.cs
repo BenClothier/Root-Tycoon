@@ -24,6 +24,12 @@ public class DirtTile : MonoBehaviour
     private float focusedScale;
     Coroutine growCoroutine;
 
+    Vector3 minPulse = new Vector3(1, 1, 1);
+    Vector3 maxPulse = new Vector3(1.5f, 1.5f, 1.5f);
+    float maxTimer = 0.25f;
+    public float timer = 0;
+    bool pulseIncreasing = true;
+
     private void Awake() {
         originalScale = transform.localScale.x;
         focusedScale = originalScale * 1.075f;
@@ -40,17 +46,35 @@ public class DirtTile : MonoBehaviour
         if (isFocused && Input.GetMouseButtonDown(1) && tileState == TileState.Grown) {
             HarvestRoots();
         }
+
+        if (tileState == TileState.Grown) {
+            Vector3 newScale;
+            if (pulseIncreasing) {
+                newScale = Vector3.Lerp(minPulse, maxPulse * 1.5f, timer / maxTimer);
+                timer += Time.deltaTime;
+                if (timer > maxTimer) pulseIncreasing = false;
+            }
+            else {
+                newScale = Vector3.Lerp(maxPulse * 1.5f, minPulse, timer / maxTimer);
+                timer -= Time.deltaTime;
+                if (timer < 0) pulseIncreasing = true;
+            }
+
+            // foreach (RootRenderer rootRenderer in roots) {
+            //     rootRenderer.transo
+            // }
+        }
     }
 
     private void OnMouseEnter() {
-        if (CanvasManager.IsHarvestActive) return;
+        if (CanvasManager.IsHarvestActive || tileState != TileState.Empty) return;
 
         isFocused = true;
         transform.localScale = new Vector3(focusedScale, transform.localScale.y, focusedScale);
     }
 
     private void OnMouseExit() {
-        if (CanvasManager.IsHarvestActive) return;
+        if (CanvasManager.IsHarvestActive || tileState != TileState.Empty) return;
         
         isFocused = false;
         transform.localScale = new Vector3(originalScale, transform.localScale.y, originalScale);
