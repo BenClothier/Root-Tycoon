@@ -32,9 +32,9 @@ public class RootAttributes
     {
         UpperColor = new Color(205, 205, 205, 255),
         LowerColor = new Color(205, 205, 205, 255),
-        Length = 2,
-        OverallGirth = 3,
-        LowerGirth = 1.5f,
+        Length = 3,
+        OverallGirth = 5,
+        LowerGirth = 2f,
     };
 
     public static RootAttributes MakeMutatedCopy(RootAttributes current){
