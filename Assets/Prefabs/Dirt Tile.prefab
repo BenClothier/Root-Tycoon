@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 6881612553541881313}
   - component: {fileID: -9081120757573537602}
   - component: {fileID: 4871726631451009744}
+  - component: {fileID: 1555530677549260628}
   m_Layer: 0
   m_Name: Dirt Tile
   m_TagString: Untagged
@@ -558,16 +559,16 @@ MonoBehaviour:
     lodLevels:
     - distance: 0
     archetypeName: Dirt__char_32_Tile_2f6d1209f123463448981067a1c23618
-    GeneratesArchetypeDefinition: 0
+    GeneratesArchetypeDefinition: 1
   InterpolationLocation: 1
-  bakedScriptType: Coherence.Generated.CoherenceSyncDirt__char_32_Tile, Assembly-CSharp
+  bakedScriptType: Coherence.Generated.CoherenceSyncDirt__char_32_Tile_id0, Assembly-CSharp
   approveAuthorityTransferRequests: 1
-  simulationType: 0
+  simulationType: 2
   authorityTransferType: 2
-  orphanedBehavior: 0
+  orphanedBehavior: 1
   lifetimeType: 0
-  uniquenessType: 0
-  coherenceUUID: 
+  uniquenessType: 1
+  coherenceUUID: cb0bf755-cf88-45c4-9f1e-578e2e63a5da
   destructionBehavior: 0
   preserveChildren: 0
   reflectionBindings: []
@@ -619,7 +620,7 @@ MonoBehaviour:
           sharedBinding: {fileID: 0}
         unityComponent: {fileID: 4871726631451009747}
         coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+        interpolationSettings: {fileID: 0}
     - rid: 4054196340744781825
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -653,6 +654,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 0.075, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1555530677549260628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4871726631451009759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d470e57c013458981031cae99a354f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAssignOnSceneInstances: 1
 --- !u!1 &4949267525662672811
 GameObject:
   m_ObjectHideFlags: 0

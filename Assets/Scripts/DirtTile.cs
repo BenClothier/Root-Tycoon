@@ -11,7 +11,9 @@ public class DirtTile : MonoBehaviour
         Growing,
         Grown
     }
-    [SerializeField] private TileState tileState = TileState.Empty;  
+
+    public TileState tileState = TileState.Empty;
+
     [SerializeField] private RootRenderer root;
     [SerializeField] private Transform[] sowPositions;
 

@@ -5,10 +5,19 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+    Coherence.BakeOnBuild:
+      value: 53
+      flags: 0
+    Coherence.BakeOnEnterPlayMode:
+      value: 53
+      flags: 0
     Coherence.CodeGen.LastInstallation:
       value: 15011a52561b59
       flags: 0
     Coherence.CoherenceSyncSchemasDirty:
+      value: 53
+      flags: 0
+    Coherence.GatherOnBake:
       value: 52
       flags: 0
     Coherence.Package.LastInstallation:
