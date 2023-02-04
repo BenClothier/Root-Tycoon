@@ -68,6 +68,7 @@ public class DirtTile : MonoBehaviour
     }
 
     public void HarvestRoots () {
+        Debug.Log(roots.ToList().Count);
         HarvestUI.HarvestRoots(roots.ToList());
 
         tileState = TileState.Empty;

@@ -16,26 +16,38 @@ public class HarvestUI : MonoBehaviour
 
     public static bool IsPanelActive = false;
 
+    List<RootRenderer> rootRenderers;
+
     public static event Action<List<RootRenderer>> OnHarvest;
     public static void HarvestRoots (List<RootRenderer> rootTransforms) {
         OnHarvest?.Invoke(rootTransforms);
     }
 
     private void OnEnable() {
-        OnHarvest += moveRoots;
+        OnHarvest += setupUI;
         OnHarvest += _ => UpdateInventory();
     }
 
     private void OnDisable() {
-        OnHarvest -= moveRoots;
+        OnHarvest -= setupUI;
         OnHarvest -= _ => UpdateInventory();
     }
 
-    public void moveRoots (List<RootRenderer> rootRenderers) {
+    public void setupUI (List<RootRenderer> rootRenderers) {
         IsPanelActive = true;
 
         // Enable Havest UI Panel
         harvestPanel.SetActive(true);
+
+        this.rootRenderers = rootRenderers;
+        UpdateHarvest();
+    }
+
+    public void UpdateHarvest () {
+        for (int i = 0; i < rootObjects.Length; i++) {
+            if (rootObjects[i] == null) continue;
+            Destroy(rootObjects[i]);
+        }
 
         // Move roots onto the UI
         for (int i = 0; i < rootRenderers.Count; i++) {
@@ -48,9 +60,16 @@ public class HarvestUI : MonoBehaviour
 
             // Create the root button objects
             rootObjects[i] = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
-            rootObjects[i].GetComponent<RootRenderer>().Inititialise(rootRenderers[i].GetAttributes());
-            rootObjects[i].GetComponent<HarvestRoot>().rootAttributes = rootRenderers[i].GetAttributes();
-            // rootObjects[i].GetComponent<HarvestRoot>().OnClick += UpdateInventory();
+            rootObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(rootRenderers[i].GetAttributes());
+            // rootObjects[i].GetComponent<HarvestRoot>().rootAttributes = rootRenderers[i].GetAttributes();
+
+            int index = i;
+            rootObjects[i].GetComponent<HarvestRoot>().OnClick += delegate { 
+                playerStats.AddToInventory(rootRenderers[index].GetAttributes()); 
+                rootRenderers.Remove(rootRenderers[index]);
+                UpdateHarvest();
+                UpdateInventory(); 
+            };
         }
     }
 
@@ -68,6 +87,13 @@ public class HarvestUI : MonoBehaviour
             Vector3 position = (playerCamera.position + playerCamera.forward * 2.75f) + offset;
 
             inventoryRoots[i] = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
+            inventoryRoots[i].GetComponentInChildren<RootRenderer>().Inititialise(playerStats.GetInventoryItem(i));
+            int ix = i;
+            inventoryRoots[i].GetComponent<HarvestRoot>().OnClick += delegate { 
+                playerStats.RemoveFromInventory(playerStats.GetInventoryItem(ix)); 
+                UpdateInventory(); 
+            };
+
         }
     }
 
