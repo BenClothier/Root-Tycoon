@@ -25,8 +25,8 @@ public class DirtTile : MonoBehaviour
     Coroutine growCoroutine;
 
     Vector3 minPulse = new Vector3(1, 1, 1);
-    Vector3 maxPulse = new Vector3(1.5f, 1.5f, 1.5f);
-    float maxTimer = 0.25f;
+    Vector3 maxPulse = new Vector3(1.0625f, 1.0625f, 1.0625f);
+    float maxTimer = 1.5f;
     public float timer = 0;
     bool pulseIncreasing = true;
 
@@ -38,45 +38,42 @@ public class DirtTile : MonoBehaviour
 
     private void Update() {
         if (CanvasManager.IsHarvestActive) return;
-        
-        if (isFocused && Input.GetMouseButtonDown(0) && tileState == TileState.Empty) {
-            PlantRoots(PlayerStats.GetInventoryItem(GameHandler.CurrentSelection));
-        }
-
-        if (isFocused && Input.GetMouseButtonDown(1) && tileState == TileState.Grown) {
-            HarvestRoots();
-        }
 
         if (tileState == TileState.Grown) {
-            Vector3 newScale;
             if (pulseIncreasing) {
-                newScale = Vector3.Lerp(minPulse, maxPulse * 1.5f, timer / maxTimer);
                 timer += Time.deltaTime;
                 if (timer > maxTimer) pulseIncreasing = false;
             }
             else {
-                newScale = Vector3.Lerp(maxPulse * 1.5f, minPulse, timer / maxTimer);
                 timer -= Time.deltaTime;
                 if (timer < 0) pulseIncreasing = true;
             }
 
-            // foreach (RootRenderer rootRenderer in roots) {
-            //     rootRenderer.transo
-            // }
+            Vector3 newScale = Vector3.Lerp(minPulse, maxPulse * 1.5f, timer / maxTimer);
+
+            foreach (RootRenderer rootRenderer in roots) {
+                rootRenderer.transform.localScale = newScale;
+            }
+        }
+    }
+
+    private void OnMouseDown() {
+        if (tileState == TileState.Empty) {
+            PlantRoots(PlayerStats.GetInventoryItem(GameHandler.CurrentSelection));
+        }
+
+        if (tileState == TileState.Grown) {
+            HarvestRoots();
         }
     }
 
     private void OnMouseEnter() {
-        if (CanvasManager.IsHarvestActive || tileState != TileState.Empty) return;
-
-        isFocused = true;
+        if (CanvasManager.IsHarvestActive || tileState == TileState.Growing || GameHandler.CurrentSelection == -1) return;
         transform.localScale = new Vector3(focusedScale, transform.localScale.y, focusedScale);
     }
 
     private void OnMouseExit() {
-        if (CanvasManager.IsHarvestActive || tileState != TileState.Empty) return;
-        
-        isFocused = false;
+        if (CanvasManager.IsHarvestActive || tileState == TileState.Growing || GameHandler.CurrentSelection == -1) return;
         transform.localScale = new Vector3(originalScale, transform.localScale.y, originalScale);
     }
 
