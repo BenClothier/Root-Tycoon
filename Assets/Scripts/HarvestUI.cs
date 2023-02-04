@@ -33,6 +33,20 @@ public class HarvestUI : MonoBehaviour
         OnHarvest -= _ => UpdateInventory();
     }
 
+    private void DestroyHarvestRoots () {
+        for (int i = 0; i < rootObjects.Length; i++) {
+            if (rootObjects[i] == null) continue;
+            Destroy(rootObjects[i]);
+        }
+    }
+    
+    private void DestroyInventoryRoots () {
+        for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
+            if (inventoryRoots[i] == null) continue;
+            Destroy(inventoryRoots[i]);
+        }
+    }
+
     public void setupUI (List<RootRenderer> rootRenderers) {
         IsPanelActive = true;
 
@@ -44,10 +58,7 @@ public class HarvestUI : MonoBehaviour
     }
 
     public void UpdateHarvest () {
-        for (int i = 0; i < rootObjects.Length; i++) {
-            if (rootObjects[i] == null) continue;
-            Destroy(rootObjects[i]);
-        }
+        DestroyHarvestRoots();
 
         // Move roots onto the UI
         for (int i = 0; i < rootRenderers.Count; i++) {
@@ -61,23 +72,14 @@ public class HarvestUI : MonoBehaviour
             // Create the root button objects
             rootObjects[i] = Instantiate(rootButtonPrefab, position, playerCamera.rotation);
             rootObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(rootRenderers[i].GetAttributes());
-            // rootObjects[i].GetComponent<HarvestRoot>().rootAttributes = rootRenderers[i].GetAttributes();
 
             int index = i;
-            rootObjects[i].GetComponent<HarvestRoot>().OnClick += delegate { 
-                playerStats.AddToInventory(rootRenderers[index].GetAttributes()); 
-                rootRenderers.Remove(rootRenderers[index]);
-                UpdateHarvest();
-                UpdateInventory(); 
-            };
+            rootObjects[i].GetComponent<HarvestRoot>().OnClick += delegate{ AttemptAddToInventory(index); };
         }
     }
 
     public void UpdateInventory () {
-        for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
-            if (inventoryRoots[i] == null) continue;
-            Destroy(inventoryRoots[i]);
-        }
+        DestroyInventoryRoots();
 
         for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
             if (playerStats.GetInventoryItem(i) == null) continue;
@@ -97,14 +99,29 @@ public class HarvestUI : MonoBehaviour
         }
     }
 
+    public void AttemptAddToInventory (int harvestIndex) {
+        bool success = playerStats.AddToInventory(rootRenderers[harvestIndex].GetAttributes());
+        if (!success) return;
+
+        rootRenderers.Remove(rootRenderers[harvestIndex]);
+        UpdateHarvest();
+        UpdateInventory();
+    }
+
+    public void SellInventoryRoot (int inventoryIndex) {
+        bool success = playerStats.RemoveFromInventory(playerStats.GetInventoryItem(inventoryIndex)); 
+        if (!success) return;
+
+        UpdateHarvest();
+        UpdateInventory();
+    }
+
     public void DisableUI () {
         // Disable harvest UI panel
         harvestPanel.SetActive(false);
 
-        // Destroy all roots on UI
-        foreach (GameObject rootObject in rootObjects) {
-            Destroy(rootObject);
-        }
+        DestroyHarvestRoots();
+        DestroyInventoryRoots();
 
         IsPanelActive = false;
     }
