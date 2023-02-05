@@ -6,8 +6,8 @@ public class Market
 {
     private const int DEMANDS_TO_SHOW = 3;
 
-    private const int MIN_NEW_DEMAND_EPOCHS = 10;
-    private const int MAX_NEW_DEMAND_EPOCHS = 20;
+    private const int MIN_NEW_DEMAND_EPOCHS = 5;
+    private const int MAX_NEW_DEMAND_EPOCHS = 8;
 
     private const float DIST_TO_DEMAND_TO_REVEAL = 0.1f;
 
@@ -33,6 +33,7 @@ public class Market
     public void SellAll(List<RootAttributes> rootsToSell)
     {
         PlayerStats.money += rootsToSell.Sum(r => GetSalePriceOfRoot(r));
+        Debug.Log("Money: " + PlayerStats.money);
     }
 
     public List<Demand> GetMostRelevantDemands()
@@ -79,7 +80,7 @@ public class Market
     private RootAttributes SimulateRootGeneticChange(RootAttributes startAttributes, int epochs){
         RootAttributes current = startAttributes;
         for (int i = 0; i < epochs; i++){
-            current = RootAttributes.MakeMutatedCopy(current);
+            current = RootAttributes.MakeMutatedCopy(current, new float[]{ 3, 2, 0, 0, 0, 0, 0, 0, 0 }.OrderBy(x => UnityEngine.Random.value).ToArray());
         }
         return current;
     }

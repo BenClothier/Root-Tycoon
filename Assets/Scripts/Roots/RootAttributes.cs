@@ -49,30 +49,26 @@ public class RootAttributes
         LowerGirth = 2.5f,
     };
 
-    public static RootAttributes MakeMutatedCopy(RootAttributes current){
-        RootAttributes lower = RootAttributes.LowerBound();
-        RootAttributes upper = RootAttributes.UpperBound();
+    public static RootAttributes MakeMutatedCopy(RootAttributes current, float[] weighting = null){
+        RootAttributes lower = LowerBound();
+        RootAttributes upper = UpperBound();
 
-        Color newUpperColour = new Color(
-            Mathf.Clamp(current.UpperColor.r + (upper.UpperColor.r - lower.UpperColor.r) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.UpperColor.r, upper.UpperColor.r),
-            Mathf.Clamp(current.UpperColor.g + (upper.UpperColor.g - lower.UpperColor.g) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.UpperColor.g, upper.UpperColor.g),
-            Mathf.Clamp(current.UpperColor.b + (upper.UpperColor.b - lower.UpperColor.b) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.UpperColor.b, upper.UpperColor.b),
-            1
-        );
-
-        Color newLowerColour = new Color(
-            Mathf.Clamp(current.LowerColor.r + (upper.LowerColor.r - lower.LowerColor.r) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.LowerColor.r, upper.LowerColor.r),
-            Mathf.Clamp(current.LowerColor.g + (upper.LowerColor.g - lower.LowerColor.g) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.LowerColor.g, upper.LowerColor.g),
-            Mathf.Clamp(current.LowerColor.b + (upper.LowerColor.b - lower.LowerColor.b) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.LowerColor.b, upper.LowerColor.b),
-            1
-        );
+        weighting ??= new float[] { 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1, .5f, .75f };
 
         return new(){
-            UpperColor = newUpperColour,
-            LowerColor = newLowerColour,
-            Length = current.Length + (upper.Length - lower.Length) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value),
-            OverallGirth = current.OverallGirth + (upper.OverallGirth - lower.OverallGirth) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * .5f,
-            LowerGirth = current.LowerGirth + (upper.LowerGirth - lower.LowerGirth) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * .75f,
+            UpperColor = new Color(
+                Mathf.Clamp(current.UpperColor.r + (upper.UpperColor.r - lower.UpperColor.r) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * weighting[0], lower.UpperColor.r, upper.UpperColor.r),
+                Mathf.Clamp(current.UpperColor.g + (upper.UpperColor.g - lower.UpperColor.g) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * weighting[1], lower.UpperColor.g, upper.UpperColor.g),
+                Mathf.Clamp(current.UpperColor.b + (upper.UpperColor.b - lower.UpperColor.b) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * weighting[2], lower.UpperColor.b, upper.UpperColor.b),
+                1),
+            LowerColor = new Color(
+                Mathf.Clamp(current.LowerColor.r + (upper.LowerColor.r - lower.LowerColor.r) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * weighting[3], lower.LowerColor.r, upper.LowerColor.r),
+                Mathf.Clamp(current.LowerColor.g + (upper.LowerColor.g - lower.LowerColor.g) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * weighting[4], lower.LowerColor.g, upper.LowerColor.g),
+                Mathf.Clamp(current.LowerColor.b + (upper.LowerColor.b - lower.LowerColor.b) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * weighting[5], lower.LowerColor.b, upper.LowerColor.b),
+                1),
+            Length = current.Length + (upper.Length - lower.Length) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * weighting[6],
+            OverallGirth = current.OverallGirth + (upper.OverallGirth - lower.OverallGirth) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * weighting[7],
+            LowerGirth = current.LowerGirth + (upper.LowerGirth - lower.LowerGirth) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * weighting[8],
         };
     }
 }
