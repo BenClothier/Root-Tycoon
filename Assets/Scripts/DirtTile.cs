@@ -63,7 +63,8 @@ public class DirtTile : MonoBehaviour
             PlayerStats.money -= price;
             Debug.Log("Money: " + PlayerStats.money);
         }
-        else if (tileState == TileState.Empty)
+
+        if (tileState == TileState.Empty)
         {
             PlantRoots(PlayerStats.GetInventoryItem(GameHandler.CurrentSelection));
         }
