@@ -6,13 +6,13 @@ public class Market
 {
     private const int DEMANDS_TO_SHOW = 3;
 
-    private const int MIN_NEW_DEMAND_EPOCHS = 8;
-    private const int MAX_NEW_DEMAND_EPOCHS = 8;
+    private const int MIN_NEW_DEMAND_EPOCHS = 15;
+    private const int MAX_NEW_DEMAND_EPOCHS = 20;
 
     private const float DIST_TO_DEMAND_TO_REVEAL = 0.1f;
 
-    private const int START_VALUE = 10;
-    private const float INCREASE_MULTIPLIER = 2;
+    private const int START_VALUE = 0;
+    private const float INCREASE_AMOUNT = 10;
  
     public List<Demand> RevealedDemand { get; private set; } = new();
     public Demand NextHiddenDemand { get; private set; }
@@ -70,7 +70,7 @@ public class Market
     }
 
     private void MakeNewDemand(){
-        currentPrice = Mathf.FloorToInt(currentPrice * INCREASE_MULTIPLIER);
+        currentPrice = Mathf.FloorToInt(currentPrice + INCREASE_AMOUNT);
         NextHiddenDemand = new Demand(){
             DemandedRootAttributes = SimulateRootGeneticChange(NextHiddenDemand.DemandedRootAttributes, UnityEngine.Random.Range(MIN_NEW_DEMAND_EPOCHS, MAX_NEW_DEMAND_EPOCHS)),
             BaseSalePrice = currentPrice,
@@ -80,7 +80,7 @@ public class Market
     private RootAttributes SimulateRootGeneticChange(RootAttributes startAttributes, int epochs){
         RootAttributes current = startAttributes;
         for (int i = 0; i < epochs; i++){
-            current = RootAttributes.MakeMutatedCopy(current, new float[]{ 3, 2, 0, 0, 0, 0, 0, 0, 0 }.OrderBy(x => UnityEngine.Random.value).ToArray());
+            current = RootAttributes.MakeMutatedCopy(current, new float[]{ 3, 2, 1, 0.5f, 0.25f, 0, 0, 0, 0 }.OrderBy(x => UnityEngine.Random.value).ToArray());
         }
         return current;
     }

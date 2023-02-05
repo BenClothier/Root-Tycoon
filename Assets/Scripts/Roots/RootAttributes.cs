@@ -53,7 +53,7 @@ public class RootAttributes
         RootAttributes lower = LowerBound();
         RootAttributes upper = UpperBound();
 
-        weighting ??= new float[] { 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1, .5f, .75f };
+        weighting ??= new float[] { 1.25f, 1.25f, 1.25f, 1.25f, 1.25f, 1.25f, 1, .5f, .75f };
 
         return new(){
             UpperColor = new Color(
