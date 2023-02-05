@@ -54,16 +54,16 @@ public class RootAttributes
         RootAttributes upper = RootAttributes.UpperBound();
 
         Color newUpperColour = new Color(
-            Mathf.Clamp(current.UpperColor.r + (upper.UpperColor.r - lower.UpperColor.r) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.25f, lower.UpperColor.r, upper.UpperColor.r),
-            Mathf.Clamp(current.UpperColor.g + (upper.UpperColor.g - lower.UpperColor.g) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.25f, lower.UpperColor.g, upper.UpperColor.g),
-            Mathf.Clamp(current.UpperColor.b + (upper.UpperColor.b - lower.UpperColor.b) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.25f, lower.UpperColor.b, upper.UpperColor.b),
+            Mathf.Clamp(current.UpperColor.r + (upper.UpperColor.r - lower.UpperColor.r) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.UpperColor.r, upper.UpperColor.r),
+            Mathf.Clamp(current.UpperColor.g + (upper.UpperColor.g - lower.UpperColor.g) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.UpperColor.g, upper.UpperColor.g),
+            Mathf.Clamp(current.UpperColor.b + (upper.UpperColor.b - lower.UpperColor.b) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.UpperColor.b, upper.UpperColor.b),
             1
         );
 
         Color newLowerColour = new Color(
-            Mathf.Clamp(current.LowerColor.r + (upper.LowerColor.r - lower.LowerColor.r) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.25f, lower.LowerColor.r, upper.LowerColor.r),
-            Mathf.Clamp(current.LowerColor.g + (upper.LowerColor.g - lower.LowerColor.g) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.25f, lower.LowerColor.g, upper.LowerColor.g),
-            Mathf.Clamp(current.LowerColor.b + (upper.LowerColor.b - lower.LowerColor.b) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.25f, lower.LowerColor.b, upper.LowerColor.b),
+            Mathf.Clamp(current.LowerColor.r + (upper.LowerColor.r - lower.LowerColor.r) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.LowerColor.r, upper.LowerColor.r),
+            Mathf.Clamp(current.LowerColor.g + (upper.LowerColor.g - lower.LowerColor.g) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.LowerColor.g, upper.LowerColor.g),
+            Mathf.Clamp(current.LowerColor.b + (upper.LowerColor.b - lower.LowerColor.b) * GameHandler.NormalDistribution.Evaluate(UnityEngine.Random.value) * 1.5f, lower.LowerColor.b, upper.LowerColor.b),
             1
         );
 
