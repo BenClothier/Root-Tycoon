@@ -22,22 +22,24 @@ public class DirtTile : MonoBehaviour
 
     private float originalScale;
     private float focusedScale;
+    private float grownScale;
     Coroutine growCoroutine;
 
-    float maxTimer = 1.5f;
+    float maxTimer = 1.2f;
     public float timer = 0;
     bool pulseIncreasing = true;
 
     private void Awake() {
         originalScale = transform.localScale.x;
         focusedScale = originalScale * 1.075f;
+        grownScale = originalScale * 1.055f;
         ResetRootScale();
     }
 
     private void Update() {
         if (CanvasManager.IsHarvestActive) return;
 
-        if (tileState == TileState.Grown) {
+        if (tileState == TileState.Grown && !isFocused) {
             if (pulseIncreasing) {
                 timer += Time.deltaTime;
                 if (timer > maxTimer) pulseIncreasing = false;
@@ -47,7 +49,8 @@ public class DirtTile : MonoBehaviour
                 if (timer < 0) pulseIncreasing = true;
             }
 
-            Vector3 newScale = Vector3.Lerp(new Vector3(originalScale, transform.localScale.y, originalScale), new Vector3(focusedScale, transform.localScale.y, focusedScale), timer / maxTimer);
+            Vector3 newScale = Vector3.Lerp(new Vector3(originalScale, transform.localScale.y, originalScale), new Vector3(grownScale, transform.localScale.y, grownScale), timer / maxTimer);
+            transform.localScale = newScale;
         }
     }
 
@@ -62,13 +65,24 @@ public class DirtTile : MonoBehaviour
     }
 
     private void OnMouseEnter() {
-        if (CanvasManager.IsHarvestActive || tileState == TileState.Growing || GameHandler.CurrentSelection == -1) return;
+        if (!canHover()) return;
+        isFocused = true;
         transform.localScale = new Vector3(focusedScale, transform.localScale.y, focusedScale);
     }
 
     private void OnMouseExit() {
-        if (CanvasManager.IsHarvestActive || tileState == TileState.Growing || GameHandler.CurrentSelection == -1) return;
+        if (!canHover()) return;
+        isFocused = false;
         transform.localScale = new Vector3(originalScale, transform.localScale.y, originalScale);
+    }
+
+    private bool canHover () {
+        if (CanvasManager.IsHarvestActive) return false;
+        if (tileState == TileState.Growing) return false;
+
+        if (tileState == TileState.Empty && GameHandler.CurrentSelection == -1) return false;
+
+        return true;
     }
 
     public void PlantRoots (RootAttributes attributes) {
@@ -84,6 +98,9 @@ public class DirtTile : MonoBehaviour
 
         tileState = TileState.Growing;
         growCoroutine = StartCoroutine(AnimateGrowth());
+
+        transform.localScale = new Vector3(originalScale, transform.localScale.y, originalScale);
+        isFocused = false;
     }
 
     public void HarvestRoots () {
@@ -91,6 +108,9 @@ public class DirtTile : MonoBehaviour
 
         tileState = TileState.Empty;
         ResetRootScale();
+
+        transform.localScale = new Vector3(originalScale, transform.localScale.y, originalScale);
+        isFocused = false;
     }
 
     private void ResetRootScale()
