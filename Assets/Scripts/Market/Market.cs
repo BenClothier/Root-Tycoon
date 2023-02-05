@@ -6,7 +6,7 @@ public class Market
 {
     private const int DEMANDS_TO_SHOW = 3;
 
-    private const int MIN_NEW_DEMAND_EPOCHS = 5;
+    private const int MIN_NEW_DEMAND_EPOCHS = 8;
     private const int MAX_NEW_DEMAND_EPOCHS = 8;
 
     private const float DIST_TO_DEMAND_TO_REVEAL = 0.1f;
