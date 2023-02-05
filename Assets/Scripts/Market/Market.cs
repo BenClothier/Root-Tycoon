@@ -4,6 +4,8 @@ using System.Linq;
 
 public class Market
 {
+    private const int DEMANDS_TO_SHOW = 3;
+
     private const int MIN_NEW_DEMAND_EPOCHS = 20;
     private const int MAX_NEW_DEMAND_EPOCHS = 40;
 
@@ -26,6 +28,11 @@ public class Market
         };
         NextHiddenDemand = initialDemand;
         RevealHiddenDemand();
+    }
+
+    public List<Demand> GetMostRelevantDemands()
+    {
+        return Enumerable.Reverse(RevealedDemand).Take(DEMANDS_TO_SHOW).ToList();
     }
 
     public void RevealHiddenDemand(){
