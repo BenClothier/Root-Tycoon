@@ -27880,6 +27880,7 @@ Transform:
   - {fileID: 2145537516}
   - {fileID: 2147216420}
   - {fileID: 160849}
+  - {fileID: 1909333669}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -89011,14 +89012,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8739060462703942499}
-  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
   m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3210949991856865756}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!1 &647231511995046844
 GameObject:
   m_ObjectHideFlags: 0
@@ -89374,7 +89375,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
+  zoomSpeed: 2000
   lerpSpeed: 5
+  maxMovePos: -5
+  minMovePos: -25
+  maxZoom: 40
+  minZoom: 9
+  cam: {fileID: 206546316585755717}
 --- !u!1 &4316721512309061060
 GameObject:
   m_ObjectHideFlags: 0
@@ -89852,8 +89859,6 @@ MonoBehaviour:
   canvasCamera: {fileID: 770990509904490074}
   harvestPanel: {fileID: 7176802306251064286}
   rootButtonPrefab: {fileID: 284074294598707891, guid: 55afffc2b749ec842be2cf577b035e96, type: 3}
-  arrowPrefab: {fileID: 6089751430534064592, guid: 4c7ef0c4c33bad541b2d49815e89c8da, type: 3}
-  arrowBarPrefab: {fileID: 5882600687402432904, guid: 149736bb982e3164db0e314171ab32d4, type: 3}
   gameUI: {fileID: 742905188585702232}
 --- !u!1 &7176802306902100980
 GameObject:
