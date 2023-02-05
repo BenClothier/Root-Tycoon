@@ -91242,10 +91242,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameHandler
       objectReference: {fileID: 0}
-    - target: {fileID: 5337865324140471993, guid: dfe1a6050f408264fa3505c5e210bcb3, type: 3}
-      propertyPath: priceDifferenceCurve.m_Curve.Array.data[1].time
-      value: 0.86553276
-      objectReference: {fileID: 0}
     - target: {fileID: 7426219666931764651, guid: dfe1a6050f408264fa3505c5e210bcb3, type: 3}
       propertyPath: m_RootOrder
       value: 1
