@@ -1,14 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
 public class Market
 {
-    private const int MIN_NEW_DEMAND_EPOCHS = 5;
-    private const int MAX_NEW_DEMAND_EPOCHS = 5;
+    private const int MIN_NEW_DEMAND_EPOCHS = 20;
+    private const int MAX_NEW_DEMAND_EPOCHS = 40;
 
-    private const float DIST_TO_DEMAND_TO_REVEAL = 0.5f;
+    private const float DIST_TO_DEMAND_TO_REVEAL = 0.1f;
 
     private const int START_VALUE = 10;
     private const float INCREASE_MULTIPLIER = 2;
