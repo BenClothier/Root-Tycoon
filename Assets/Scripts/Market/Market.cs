@@ -6,8 +6,8 @@ public class Market
 {
     private const int DEMANDS_TO_SHOW = 3;
 
-    private const int MIN_NEW_DEMAND_EPOCHS = 5;
-    private const int MAX_NEW_DEMAND_EPOCHS = 5;
+    private const int MIN_NEW_DEMAND_EPOCHS = 10;
+    private const int MAX_NEW_DEMAND_EPOCHS = 20;
 
     private const float DIST_TO_DEMAND_TO_REVEAL = 0.1f;
 
@@ -30,9 +30,9 @@ public class Market
         RevealHiddenDemand();
     }
 
-    public int SellAll(List<RootAttributes> rootsToSell)
+    public void SellAll(List<RootAttributes> rootsToSell)
     {
-        return rootsToSell.Sum(r => GetSalePriceOfRoot(r));
+        PlayerStats.money += rootsToSell.Sum(r => GetSalePriceOfRoot(r));
     }
 
     public List<Demand> GetMostRelevantDemands()
@@ -65,7 +65,7 @@ public class Market
             RevealHiddenDemand();
         }
 
-        return Mathf.FloorToInt(Mathf.Max(0, demand.BaseSalePrice - GameHandler.PriceDifferenceCurve.Evaluate(likenessToDemand)));
+        return Mathf.FloorToInt(Mathf.Max(0, demand.BaseSalePrice * GameHandler.PriceDifferenceCurve.Evaluate(likenessToDemand)));
     }
 
     private void MakeNewDemand(){

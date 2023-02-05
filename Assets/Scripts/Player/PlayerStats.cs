@@ -8,7 +8,7 @@ public static class PlayerStats
     public const int INVENTORY_SIZE = 4;
 
     static RootAttributes[] inventory = new RootAttributes[INVENTORY_SIZE] {null, null, null, RootAttributes.Default()}; // Can only keep 6 roots in the inventory
-    public static int money = 500;
+    public static int money = 0;
 
     public static event Action OnInventoryChange;
 

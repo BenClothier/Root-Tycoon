@@ -92,8 +92,11 @@ public class DirtTile : MonoBehaviour
 
         rootAttributes = attributes;
 
-        foreach (RootRenderer root in roots)
+        roots[0].Inititialise(attributes);
+
+        for (int i = 1; i < roots.Length; i++)
         {
+            RootRenderer root = roots[i];
             root.transform.rotation = Quaternion.Euler(0, 360 * UnityEngine.Random.value, 0);
             root.Inititialise(RootAttributes.MakeMutatedCopy(attributes));
         }
