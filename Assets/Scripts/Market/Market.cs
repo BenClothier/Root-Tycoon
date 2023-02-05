@@ -6,25 +6,23 @@ public class Market
 {
     private const int DEMANDS_TO_SHOW = 3;
 
-    private const int MIN_NEW_DEMAND_EPOCHS = 15;
-    private const int MAX_NEW_DEMAND_EPOCHS = 20;
+    private const int MIN_NEW_DEMAND_EPOCHS = 10;
+    private const int MAX_NEW_DEMAND_EPOCHS = 15;
 
     private const float DIST_TO_DEMAND_TO_REVEAL = 0.1f;
 
-    private const int START_VALUE = 0;
-    private const float INCREASE_AMOUNT = 10;
+    private const int START_VALUE = 10;
+    private const int INCREASE_AMOUNT = 15;
  
     public List<Demand> RevealedDemand { get; private set; } = new();
     public Demand NextHiddenDemand { get; private set; }
 
     private List<Demand> AllDemand => RevealedDemand.Append(NextHiddenDemand).ToList();
 
-    private int currentPrice = START_VALUE; 
-
     public Market(){
         var initialDemand = new Demand(){
             DemandedRootAttributes =  RootAttributes.Default(),
-            BaseSalePrice = 10,
+            BaseSalePrice = START_VALUE,
         };
         NextHiddenDemand = initialDemand;
         RevealHiddenDemand();
@@ -70,10 +68,9 @@ public class Market
     }
 
     private void MakeNewDemand(){
-        currentPrice = Mathf.FloorToInt(currentPrice + INCREASE_AMOUNT);
         NextHiddenDemand = new Demand(){
             DemandedRootAttributes = SimulateRootGeneticChange(NextHiddenDemand.DemandedRootAttributes, UnityEngine.Random.Range(MIN_NEW_DEMAND_EPOCHS, MAX_NEW_DEMAND_EPOCHS)),
-            BaseSalePrice = currentPrice,
+            BaseSalePrice = NextHiddenDemand.BaseSalePrice + INCREASE_AMOUNT,
         };
     }
 
