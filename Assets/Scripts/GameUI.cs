@@ -6,19 +6,24 @@ using UnityEngine;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private Transform canvasCamera;
+    [SerializeField] private GameObject demandRootPrefab;
     [SerializeField] private GameObject rootButtonPrefab;
 
     [SerializeField] private RectTransform selectionBox;
 
     GameObject[] rootObjects = new GameObject[4];
 
+    GameObject[] demandObjects = new GameObject[3];
+
     private void OnEnable() {
         UpdateInventory();
+        UpdateDemand();
         PlayerStats.OnInventoryChange += UpdateInventory;
     }
 
     private void OnDisable() {
         DeleteInventoryObjects();
+        DeleteDemandObjects();
         PlayerStats.OnInventoryChange -= UpdateInventory;
     }
 
@@ -42,6 +47,32 @@ public class GameUI : MonoBehaviour
 
             int index = i;
             rootObjects[i].GetComponent<HarvestRoot>().OnClick += delegate { ToggleSelection(index); };
+        }
+    }
+
+    public void UpdateDemand () {
+        DeleteDemandObjects();
+
+        Vector3 offsetFromCamera = (canvasCamera.forward * 2f) + (canvasCamera.right * 0.975f) + (canvasCamera.up * 0.4f);
+
+        List<Market.Demand> demands = GameHandler.Market.GetMostRelevantDemands();
+
+        for (int i = 0; i < demands.Count; i++) {
+            Vector3 individualOffset = -canvasCamera.up * i * 0.25f;
+
+            Vector3 position = canvasCamera.position + offsetFromCamera + individualOffset;
+            Quaternion rotation = canvasCamera.rotation * Quaternion.Euler(0, 0, -20);
+
+            demandObjects[i] = Instantiate(demandRootPrefab, position, rotation);
+            demandObjects[i].transform.parent = canvasCamera;
+
+            demandObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(demands[i].DemandedRootAttributes);
+        }
+    }
+
+    public void DeleteDemandObjects () {
+        foreach (GameObject rootObject in demandObjects) {
+            Destroy(rootObject);
         }
     }
 
