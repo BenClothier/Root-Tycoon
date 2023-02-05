@@ -8,10 +8,14 @@ public class HarvestUI : MonoBehaviour
     [SerializeField] private Transform camera;
     [SerializeField] private GameObject harvestPanel;
     [SerializeField] private GameObject rootButtonPrefab;
+    [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private GameObject arrowBarPrefab;
 
     GameObject[] rootObjects = new GameObject[20];
 
     GameObject[] inventoryRoots = new GameObject[4];
+
+    GameObject[] arrows = new GameObject[20];
 
     List<RootAttributes> rootAttributes;
 
@@ -26,6 +30,11 @@ public class HarvestUI : MonoBehaviour
         for (int i = 0; i < rootObjects.Length; i++) {
             if (rootObjects[i] == null) continue;
             Destroy(rootObjects[i]);
+        }
+
+        for (int i = 0; i < arrows.Length; i++) {
+            if (arrows[i] == null) continue;
+            Destroy(arrows[i]);
         }
     }
     
@@ -45,13 +54,13 @@ public class HarvestUI : MonoBehaviour
     public void UpdateHarvest () {
         DestroyHarvestRoots();
 
-        Vector3 offsetFromCamera = (camera.forward * 2f) - (camera.right * 0.85f) - (camera.up * 0.35f);
+        Vector3 offsetFromCamera = (camera.forward * 2f) - (camera.right * 1f) - (camera.up * 0.35f);
 
         for (int i = 0; i < rootAttributes.Count; i++) {
             int xPos = i % 5;
             int yPos = i / 5;
 
-            Vector3 individualOffset = (camera.right * xPos + camera.up * yPos) * 0.25f;
+            Vector3 individualOffset = (camera.right * xPos * 0.3f) + (0.25f * camera.up * yPos);
 
             Vector3 position = camera.position + offsetFromCamera + individualOffset;
             Quaternion rotation = camera.rotation * Quaternion.Euler(0, 0, -20);
@@ -62,6 +71,24 @@ public class HarvestUI : MonoBehaviour
 
             int ix = i;
             rootObjects[i].GetComponent<HarvestRoot>().OnClick += delegate { HarvestRootButton(ix); };
+
+            int salePrice = GameHandler.Market.GetSalePriceOfRoot(rootAttributes[i]); // Get the price of the current root
+            int originalSalePrice = GameHandler.Market.GetSalePriceOfRoot(rootAttributes[0]);
+            if (salePrice < originalSalePrice) {
+                // Red down arrow
+                arrows[i] = Instantiate(arrowPrefab, position + (camera.right * 0.135f), camera.rotation);
+                arrows[i].transform.Rotate(new Vector3(0, 0, 180));
+                arrows[i].GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+            }
+            else if (salePrice > originalSalePrice) {
+                // Green up arrow
+                arrows[i] = Instantiate(arrowPrefab, position + (camera.right * 0.135f), camera.rotation);
+                arrows[i].GetComponentInChildren<MeshRenderer>().material.color = Color.green;
+            }
+            else {
+                // TODO bar
+                arrows[i] = Instantiate(arrowBarPrefab, position + (camera.right * 0.135f), camera.rotation);
+            }
         }
     }
 

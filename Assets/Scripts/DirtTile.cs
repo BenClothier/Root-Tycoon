@@ -24,8 +24,6 @@ public class DirtTile : MonoBehaviour
     private float focusedScale;
     Coroutine growCoroutine;
 
-    Vector3 minPulse = new Vector3(1, 1, 1);
-    Vector3 maxPulse = new Vector3(1.0625f, 1.0625f, 1.0625f);
     float maxTimer = 1.5f;
     public float timer = 0;
     bool pulseIncreasing = true;
@@ -49,11 +47,7 @@ public class DirtTile : MonoBehaviour
                 if (timer < 0) pulseIncreasing = true;
             }
 
-            Vector3 newScale = Vector3.Lerp(minPulse, maxPulse * 1.5f, timer / maxTimer);
-
-            foreach (RootRenderer rootRenderer in roots) {
-                rootRenderer.transform.localScale = newScale;
-            }
+            Vector3 newScale = Vector3.Lerp(new Vector3(originalScale, transform.localScale.y, originalScale), new Vector3(focusedScale, transform.localScale.y, focusedScale), timer / maxTimer);
         }
     }
 

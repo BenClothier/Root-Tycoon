@@ -13,11 +13,15 @@ public class GameHandler : MonoBehaviour
     [SerializeField] private AnimationCurve normalDistr;
     [SerializeField] private AnimationCurve priceDifferenceCurve;
 
+    public static Market Market;
+
     public static int CurrentSelection = -1;
 
     private void Awake() {
         NormalDistribution = normalDistr;
         PriceDifferenceCurve = priceDifferenceCurve;
+
+        Market = new Market();
     }
 
     private void Start() {
