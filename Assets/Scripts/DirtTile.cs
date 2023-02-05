@@ -1,21 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DirtTile : MonoBehaviour
 {
     private static readonly float TIME_TO_GROW = 15;
 
-    public enum TileState {
+    public enum TileState
+    {
+        ForSale,
         Empty,
         Growing,
         Grown
     }
 
     public TileState tileState = TileState.Empty;
-
+    [SerializeField] private int price;
     [SerializeField] private RootRenderer[] roots;
 
     private bool isFocused = false;
@@ -57,11 +57,17 @@ public class DirtTile : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if (tileState == TileState.Empty) {
+        if (tileState == TileState.ForSale && PlayerStats.money >= price)
+        {
+            tileState = TileState.Empty;
+            PlayerStats.money -= price;
+        }
+        else if (tileState == TileState.Empty)
+        {
             PlantRoots(PlayerStats.GetInventoryItem(GameHandler.CurrentSelection));
         }
-
-        if (tileState == TileState.Grown) {
+        else if (tileState == TileState.Grown)
+        {
             HarvestRoots();
         }
     }
@@ -81,7 +87,6 @@ public class DirtTile : MonoBehaviour
     private bool canHover () {
         if (CanvasManager.IsHarvestActive) return false;
         if (tileState == TileState.Growing) return false;
-
         if (tileState == TileState.Empty && GameHandler.CurrentSelection == -1) return false;
 
         return true;
