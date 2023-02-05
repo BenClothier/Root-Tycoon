@@ -30,18 +30,16 @@ public class GameUI : MonoBehaviour
     public void UpdateInventory () {
         DeleteInventoryObjects();
 
-        Vector3 offsetFromCamera = (canvasCamera.forward * 2f) - (canvasCamera.right * 0.4f) - (canvasCamera.up * 0.65f);
+        Vector3 startPos = new Vector3(-1.12f,-1.86000013f,9);
 
         for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
             if (PlayerStats.GetInventoryItem(i) == null) continue;
 
-            Vector3 individualOffset = canvasCamera.right * i * 0.25f;
-
-            Vector3 position = canvasCamera.position + offsetFromCamera + individualOffset;
             Quaternion rotation = canvasCamera.rotation * Quaternion.Euler(0, 0, -20);
 
-            rootObjects[i] = Instantiate(rootButtonPrefab, position, rotation);
+            rootObjects[i] = Instantiate(rootButtonPrefab, Vector3.zero, rotation);
             rootObjects[i].transform.parent = canvasCamera;
+            rootObjects[i].transform.localPosition = startPos + (i * new Vector3(0.735f, 0, 0));
 
             rootObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(PlayerStats.GetInventoryItem(i));
 
@@ -53,18 +51,17 @@ public class GameUI : MonoBehaviour
     public void UpdateDemand () {
         DeleteDemandObjects();
 
-        Vector3 offsetFromCamera = (canvasCamera.forward * 2f) + (canvasCamera.right * 0.975f) + (canvasCamera.up * 0.4f);
+        Vector3 startPos = new Vector3(3.02999997f,1.34000015f,9);
 
         List<Market.Demand> demands = GameHandler.Market.GetMostRelevantDemands();
 
         for (int i = 0; i < demands.Count; i++) {
-            Vector3 individualOffset = -canvasCamera.up * i * 0.25f;
-
-            Vector3 position = canvasCamera.position + offsetFromCamera + individualOffset;
+            // Vector3 position = canvasCamera.position + offsetFromCamera + individualOffset;
             Quaternion rotation = canvasCamera.rotation * Quaternion.Euler(0, 0, -20);
 
-            demandObjects[i] = Instantiate(demandRootPrefab, position, rotation);
+            demandObjects[i] = Instantiate(demandRootPrefab, Vector3.zero, rotation);
             demandObjects[i].transform.parent = canvasCamera;
+            demandObjects[i].transform.localPosition = startPos + (i * new Vector3(0, -0.65f, 0));
 
             demandObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(demands[i].DemandedRootAttributes);
         }

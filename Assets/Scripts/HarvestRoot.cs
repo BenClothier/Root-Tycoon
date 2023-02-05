@@ -7,7 +7,7 @@ public class HarvestRoot : MonoBehaviour
 {
     bool isFocused;
 
-    Vector3 originalScale = new Vector3(0.75f, 0.75f, 0.75f);
+    Vector3 originalScale;
     Vector3 focusedScale;
 
     [HideInInspector] public RootAttributes rootAttributes;
@@ -15,6 +15,7 @@ public class HarvestRoot : MonoBehaviour
     public event Action OnClick;
 
     private void OnEnable() {
+        originalScale = transform.localScale;
         focusedScale = originalScale * 1.15f;
 
         OnMouseExit();
