@@ -15,6 +15,8 @@ public class GameUI : MonoBehaviour
     [Space]
     [SerializeField] private TextMeshProUGUI[] demandTexts;
     [SerializeField] private TextMeshProUGUI[] inventoryTexts;
+    [Space]
+    [SerializeField] private TextMeshProUGUI moneyText;
 
     GameObject[] rootObjects = new GameObject[4];
 
@@ -24,12 +26,20 @@ public class GameUI : MonoBehaviour
         UpdateInventory();
         UpdateDemand();
         PlayerStats.OnInventoryChange += UpdateInventory;
+        PlayerStats.OnMoneyChange += UpdateMoney;
+
+        UpdateMoney();
     }
 
     private void OnDisable() {
         DeleteInventoryObjects();
         DeleteDemandObjects();
         PlayerStats.OnInventoryChange -= UpdateInventory;
+        PlayerStats.OnMoneyChange -= UpdateMoney;
+    }
+
+    void UpdateMoney () {
+        moneyText.text = "$" + PlayerStats.money;
     }
 
     public void UpdateInventory () {

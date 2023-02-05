@@ -34,7 +34,7 @@ public class DirtTile : MonoBehaviour
     private RootAttributes rootAttributes;
 
     private void Awake() {
-        priceText.text = $"£{price}";
+        priceText.text = "$" + price;
         originalScale = transform.localScale.x;
         focusedScale = originalScale * 1.075f;
         grownScale = originalScale * 1.055f;
@@ -68,7 +68,7 @@ public class DirtTile : MonoBehaviour
         if (tileState == TileState.ForSale && PlayerStats.money >= price)
         {
             tileState = TileState.Empty;
-            PlayerStats.money -= price;
+            PlayerStats.RemoveMoney(price);
             Debug.Log("Money: " + PlayerStats.money);
             DisablePriceText();
         }

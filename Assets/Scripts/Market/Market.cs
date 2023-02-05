@@ -32,7 +32,7 @@ public class Market
 
     public void SellAll(List<RootAttributes> rootsToSell)
     {
-        PlayerStats.money += rootsToSell.Sum(r => GetSalePriceOfRoot(r));
+        PlayerStats.AddMoney(rootsToSell.Sum(r => GetSalePriceOfRoot(r)));
         Debug.Log("Money: " + PlayerStats.money);
     }
 

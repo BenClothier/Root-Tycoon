@@ -9,6 +9,7 @@ public static class PlayerStats
 
     static RootAttributes[] inventory = new RootAttributes[INVENTORY_SIZE] {null, null, null, RootAttributes.Default()}; // Can only keep 6 roots in the inventory
     public static int money = 0;
+    public static event Action OnMoneyChange;
 
     public static event Action OnInventoryChange;
 
@@ -52,12 +53,15 @@ public static class PlayerStats
 
     public static void AddMoney (int amount) {
         money += amount;
+        OnMoneyChange?.Invoke();
     }
 
     public static bool RemoveMoney (int amount) {
         if (money - amount < 0) return false;
 
         money -= amount;
+
+        OnMoneyChange?.Invoke();
         return true;
     }
 }
