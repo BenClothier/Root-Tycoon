@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 4690779073597632132}
   - component: {fileID: 2874349276595055477}
   - component: {fileID: 3839940125942811002}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 3341537765106792165}
   - component: {fileID: 817541387689212046}
   - component: {fileID: 5791601085483576176}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,8 +827,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\xA3100000000"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a25778a99af079468cac88916498f72, type: 2}
+  m_sharedMaterial: {fileID: -8529809433022767190, guid: 6a25778a99af079468cac88916498f72, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.35
+  m_fontSize: 0.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
