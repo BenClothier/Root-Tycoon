@@ -30,6 +30,11 @@ public class Market
         RevealHiddenDemand();
     }
 
+    public int SellAll(List<RootAttributes> rootsToSell)
+    {
+        return rootsToSell.Sum(r => GetSalePriceOfRoot(r));
+    }
+
     public List<Demand> GetMostRelevantDemands()
     {
         return Enumerable.Reverse(RevealedDemand).Take(DEMANDS_TO_SHOW).ToList();
