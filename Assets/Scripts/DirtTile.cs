@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class DirtTile : MonoBehaviour
@@ -16,6 +17,7 @@ public class DirtTile : MonoBehaviour
 
     public TileState tileState = TileState.Empty;
     [SerializeField] private int price;
+    [SerializeField] private TMP_Text priceText;
     [SerializeField] private RootRenderer[] roots;
 
     private bool isFocused = false;
@@ -32,10 +34,16 @@ public class DirtTile : MonoBehaviour
     private RootAttributes rootAttributes;
 
     private void Awake() {
+        priceText.text = $"£{price}";
         originalScale = transform.localScale.x;
         focusedScale = originalScale * 1.075f;
         grownScale = originalScale * 1.055f;
         ResetRootScale();
+
+        if (tileState != TileState.ForSale)
+        {
+            DisablePriceText();
+        }
     }
 
     private void Update() {
@@ -62,6 +70,7 @@ public class DirtTile : MonoBehaviour
             tileState = TileState.Empty;
             PlayerStats.money -= price;
             Debug.Log("Money: " + PlayerStats.money);
+            DisablePriceText();
         }
 
         if (tileState == TileState.Empty)
@@ -148,5 +157,10 @@ public class DirtTile : MonoBehaviour
         }
 
         tileState = TileState.Grown;
+    }
+
+    private void DisablePriceText()
+    {
+        priceText.transform.parent.gameObject.SetActive(false);
     }
 }
