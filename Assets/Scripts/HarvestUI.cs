@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HarvestUI : MonoBehaviour
 {
-    [SerializeField] private Transform camera;
+    [SerializeField] private Transform canvasCamera;
     [SerializeField] private GameObject harvestPanel;
     [SerializeField] private GameObject rootButtonPrefab;
     [SerializeField] private GameObject arrowPrefab;
@@ -17,6 +17,7 @@ public class HarvestUI : MonoBehaviour
 
     GameObject[] arrows = new GameObject[20];
 
+    RootAttributes originalRoot;
     List<RootAttributes> rootAttributes;
 
     [SerializeField] private GameObject gameUI;
@@ -45,7 +46,8 @@ public class HarvestUI : MonoBehaviour
         }
     }
 
-    public void SetupUI (List<RootAttributes> rootAttributes) {
+    public void SetupUI (RootAttributes originalRoot, List<RootAttributes> rootAttributes) {
+        this.originalRoot = originalRoot;
         this.rootAttributes = rootAttributes;
         UpdateHarvest();
         UpdateInventory();
@@ -54,40 +56,40 @@ public class HarvestUI : MonoBehaviour
     public void UpdateHarvest () {
         DestroyHarvestRoots();
 
-        Vector3 offsetFromCamera = (camera.forward * 2f) - (camera.right * 1f) - (camera.up * 0.35f);
+        Vector3 offsetFromCamera = (canvasCamera.forward * 2f) - (canvasCamera.right * 1f) - (canvasCamera.up * 0.35f);
 
         for (int i = 0; i < rootAttributes.Count; i++) {
             int xPos = i % 5;
             int yPos = i / 5;
 
-            Vector3 individualOffset = (camera.right * xPos * 0.3f) + (0.25f * camera.up * yPos);
+            Vector3 individualOffset = (canvasCamera.right * xPos * 0.3f) + (0.25f * canvasCamera.up * yPos);
 
-            Vector3 position = camera.position + offsetFromCamera + individualOffset;
-            Quaternion rotation = camera.rotation * Quaternion.Euler(0, 0, -20);
+            Vector3 position = canvasCamera.position + offsetFromCamera + individualOffset;
+            Quaternion rotation = canvasCamera.rotation * Quaternion.Euler(0, 0, -20);
 
             rootObjects[i] = Instantiate(rootButtonPrefab, position, rotation);
-            rootObjects[i].transform.parent = camera;
+            rootObjects[i].transform.parent = canvasCamera;
             rootObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(rootAttributes[i]);
 
             int ix = i;
             rootObjects[i].GetComponent<HarvestRoot>().OnClick += delegate { HarvestRootButton(ix); };
 
             int salePrice = GameHandler.Market.GetSalePriceOfRoot(rootAttributes[i]); // Get the price of the current root
-            int originalSalePrice = GameHandler.Market.GetSalePriceOfRoot(rootAttributes[0]);
+            int originalSalePrice = GameHandler.Market.GetSalePriceOfRoot(originalRoot);
             if (salePrice < originalSalePrice) {
                 // Red down arrow
-                arrows[i] = Instantiate(arrowPrefab, position + (camera.right * 0.135f), camera.rotation);
+                arrows[i] = Instantiate(arrowPrefab, position + (canvasCamera.right * 0.135f), canvasCamera.rotation);
                 arrows[i].transform.Rotate(new Vector3(0, 0, 180));
                 arrows[i].GetComponentInChildren<MeshRenderer>().material.color = Color.red;
             }
             else if (salePrice > originalSalePrice) {
                 // Green up arrow
-                arrows[i] = Instantiate(arrowPrefab, position + (camera.right * 0.135f), camera.rotation);
+                arrows[i] = Instantiate(arrowPrefab, position + (canvasCamera.right * 0.135f), canvasCamera.rotation);
                 arrows[i].GetComponentInChildren<MeshRenderer>().material.color = Color.green;
             }
             else {
                 // TODO bar
-                arrows[i] = Instantiate(arrowBarPrefab, position + (camera.right * 0.135f), camera.rotation);
+                arrows[i] = Instantiate(arrowBarPrefab, position + (canvasCamera.right * 0.135f), canvasCamera.rotation);
             }
         }
     }
@@ -95,18 +97,18 @@ public class HarvestUI : MonoBehaviour
     public void UpdateInventory () {
         DestroyInventoryRoots();
 
-        Vector3 offsetFromCamera = (camera.forward * 2f) + (camera.right * 0.8f) - (camera.up * 0.35f);
+        Vector3 offsetFromCamera = (canvasCamera.forward * 2f) + (canvasCamera.right * 0.8f) - (canvasCamera.up * 0.35f);
 
         for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
             if (PlayerStats.GetInventoryItem(i) == null) continue;
 
-            Vector3 individualOffset = (camera.up * i) * 0.25f;
+            Vector3 individualOffset = (canvasCamera.up * i) * 0.25f;
 
-            Vector3 position = camera.position + offsetFromCamera + individualOffset;
-            Quaternion rotation = camera.rotation * Quaternion.Euler(0, 0, -20);
+            Vector3 position = canvasCamera.position + offsetFromCamera + individualOffset;
+            Quaternion rotation = canvasCamera.rotation * Quaternion.Euler(0, 0, -20);
 
             inventoryRoots[i] = Instantiate(rootButtonPrefab, position, rotation);
-            inventoryRoots[i].transform.parent = camera;
+            inventoryRoots[i].transform.parent = canvasCamera;
             inventoryRoots[i].GetComponentInChildren<RootRenderer>().Inititialise(PlayerStats.GetInventoryItem(i));
 
             int ix = i;

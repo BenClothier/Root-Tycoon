@@ -25,9 +25,11 @@ public class DirtTile : MonoBehaviour
     private float grownScale;
     Coroutine growCoroutine;
 
-    float maxTimer = 1.2f;
+    float maxTimer = 0.8f;
     public float timer = 0;
     bool pulseIncreasing = true;
+
+    private RootAttributes rootAttributes;
 
     private void Awake() {
         originalScale = transform.localScale.x;
@@ -88,6 +90,8 @@ public class DirtTile : MonoBehaviour
     public void PlantRoots (RootAttributes attributes) {
         if (attributes == null) return;
 
+        rootAttributes = attributes;
+
         foreach (RootRenderer root in roots)
         {
             root.transform.rotation = Quaternion.Euler(0, 360 * UnityEngine.Random.value, 0);
@@ -104,7 +108,7 @@ public class DirtTile : MonoBehaviour
     }
 
     public void HarvestRoots () {
-        CanvasManager.HarvestRoots(roots.Select(rr => rr.GetAttributes()).ToList());
+        CanvasManager.HarvestRoots(rootAttributes, roots.Select(rr => rr.GetAttributes()).ToList());
 
         tileState = TileState.Empty;
         ResetRootScale();

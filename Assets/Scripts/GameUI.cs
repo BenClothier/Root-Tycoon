@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] private Transform camera;
+    [SerializeField] private Transform canvasCamera;
     [SerializeField] private GameObject rootButtonPrefab;
 
     [SerializeField] private RectTransform selectionBox;
@@ -25,18 +25,18 @@ public class GameUI : MonoBehaviour
     public void UpdateInventory () {
         DeleteInventoryObjects();
 
-        Vector3 offsetFromCamera = (camera.forward * 2f) - (camera.right * 0.4f) - (camera.up * 0.65f);
+        Vector3 offsetFromCamera = (canvasCamera.forward * 2f) - (canvasCamera.right * 0.4f) - (canvasCamera.up * 0.65f);
 
         for (int i = 0; i < PlayerStats.INVENTORY_SIZE; i++) {
             if (PlayerStats.GetInventoryItem(i) == null) continue;
 
-            Vector3 individualOffset = camera.right * i * 0.25f;
+            Vector3 individualOffset = canvasCamera.right * i * 0.25f;
 
-            Vector3 position = camera.position + offsetFromCamera + individualOffset;
-            Quaternion rotation = camera.rotation * Quaternion.Euler(0, 0, -20);
+            Vector3 position = canvasCamera.position + offsetFromCamera + individualOffset;
+            Quaternion rotation = canvasCamera.rotation * Quaternion.Euler(0, 0, -20);
 
             rootObjects[i] = Instantiate(rootButtonPrefab, position, rotation);
-            rootObjects[i].transform.parent = camera;
+            rootObjects[i].transform.parent = canvasCamera;
 
             rootObjects[i].GetComponentInChildren<RootRenderer>().Inititialise(PlayerStats.GetInventoryItem(i));
 

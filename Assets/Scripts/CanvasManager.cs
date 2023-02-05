@@ -12,11 +12,11 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameUI gameUI;
     [SerializeField] private HarvestUI harvestUI;
 
-    public static void HarvestRoots (List<RootAttributes> rootAttributes) {
+    public static void HarvestRoots (RootAttributes originalRoot, List<RootAttributes> rootAttributes) {
         _instance.harvestUI.gameObject.SetActive(true);
         _instance.gameUI.gameObject.SetActive(false);
 
-        _instance.harvestUI.SetupUI(rootAttributes);
+        _instance.harvestUI.SetupUI(originalRoot, rootAttributes);
     }
 
     private static CanvasManager _instance;
