@@ -117,7 +117,7 @@ public class HarvestUI : MonoBehaviour
 
             inventoryTexts[i] = Instantiate(pricePrefab, inventoryImage);
 
-            int salePrice = GameHandler.Market.GetSalePriceOfRoot(PlayerStats.GetInventoryItem(i)); // Get the price of the current root
+            int salePrice = GameHandler.Market.GetSalePriceOfRoot(PlayerStats.GetInventoryItem(i), true); // Get the price of the current root
             inventoryTexts[i].transform.localPosition = startText + new Vector3(0, i * -180, 0);
             inventoryTexts[i].GetComponent<TextMeshProUGUI>().text = "$" + salePrice;
             inventoryTexts[i].GetComponent<TextMeshProUGUI>().color = new Color(226, 226, 226 );
